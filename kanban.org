@@ -1,0 +1,70 @@
+#+TODO: TODO(t) IN-PROGRESS (p) | DONE(d) CANCELLED(c)
+#+PRIORITIES: 1 5 3
+* Jira Tickets
+** Todo
+*** TODO Make Figma wireframe template for website, iPad, and mobile (iPhone / Android)
+<2023-05-16 Tue 11:24>: I need to make a Figma wireframe that incorporates the following design patterns:
+- Website (normal desktop resolution)
+- iPad
+- Mobile devices (iPhone, Android)
+
+There are simpler ways to deal with this using the '@media' tag so try this method first, or see if React Native allows you to do this automatically.
+
+Or, see if Tailwind CSS or Material UI can be used for this purpose alone.
+
+<2023-05-16 Tue 11:42>: I really like how this form looks, so this would be a good design idea for the 'login' / 'register' screen:
+- https://www.brandbucket.com/app-name-generator
+
+*** TODO Research guides on how to incorporate React Native with Entity framework (C# / .NET)
+*** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
+** In Progress
+** Complete
+*** DONE Come up with app name that doesn't already exist
+<2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
+- https://wegifter.co/
+
+However, to be fair, that website and app is completely dedicated to children gifts and not at all related to the ideas I had.
+
+My idea was to make the process of assembling gift lists with links way easier.
+
+The process would include:
+- A super easy to use gift intake form which includes name of gift, price, and link to the actual gift (Amazon, Walmart, eBay, etc)
+- No need to authenticate to use the app, only if you want to store previous lists for future reference that are associated to your account
+- Shortened URL links to quickly share with your friends and family
+
+<2023-05-16 Tue 11:29>: I tried to use the following sites to generate names:
+- https://www.panabee.com/app-name/ideas
+- https://www.wix.com/tools/bng-list
+- https://namelix.com/app/
+
+Idea names:
+- Linker
+- Linkwrap
+- Tanglify
+- SurpriseSwap
+- Giftee (taken)
+- Giftomania (Tina's idea) (taken)
+- Giftshare (taken)
+- Giftly (taken)
+- Quick Gifts (taken)
+- Giver (taken)
+- GiftTree (taken)
+- Gift Linker (taken)
+- Givey (taken)
+
+Other ideas to generate names
+- Secret santa all year
+- Presents
+- Sharing
+- Link
+- Hub
+- List
+- Giving
+
+<2023-05-16 Tue 16:47>: I have tried to wrap my head around an idea for a name all day but just can't think of a good one yet.
+
+The main ideas I want to get across in a name is the idea to share gifts easily with shortened, spreadable links.
+
+I wanted to basically do what Linktree is doing, but for gifts since I always hated having to figure out what people wanted for Christmas because they never sent me a list of what to surprise them with.
+
+<2023-05-18 Thu 13:34>: I settled with the name 'Registree' so I'm glad that's not taken. It's crazy since every other single name pretty was taken but I guess this is a very popular idea to do, so time for my spin on it :)
