@@ -20,6 +20,10 @@ From the top of my head, this is probably what I should use in terms of database
 - Facebook account
 - TikTok account
 
+Related YouTube videos for reference:
+- #1 - Build Quiz App in React & Asp.Net Core Web API with Latest Material UI (https://www.youtube.com/watch?v=MV1rEWlcW7U)
+- React with .NET Web API – Basic App Tutorial (https://www.youtube.com/watch?v=4RKuyp_bOhY)
+
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
 ** In Progress
