@@ -24,12 +24,179 @@ Related YouTube videos for reference:
 - #1 - Build Quiz App in React & Asp.Net Core Web API with Latest Material UI (https://www.youtube.com/watch?v=MV1rEWlcW7U)
 - React with .NET Web API – Basic App Tutorial (https://www.youtube.com/watch?v=4RKuyp_bOhY)
 
+Related guides for reference:
+- https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?view=vs-2022
+- https://medium.com/bb-tutorials-and-thoughts/how-to-develop-and-build-react-app-with-net-core-backend-59d4fc5e3041
+- https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio
+
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
 ** In Progress
 *** IN-PROGRESS Utilize 'Create React Native' app first so that I can template it to the Figma design template accordingly
 <2023-05-19 Fri 14:01>: I will utilize the React Native docs first here to create the related 'Create React Native' app accordingly:
 - https://reactnative.dev/
+
+<2023-05-19 Fri 15:36>: I referred to the 'Getting Started' section of the 'React Native' docs page which redirected to the 'Setting up the development environment' page:
+- https://reactnative.dev/docs/environment-setup
+
+Basically, there are two ways to do this, you can either go with their suggested 'Expo' method which is yet another third party outside of React that handles development, or you have to use 'React Native CLI' with 'Android Studio' and 'XCode'. I think you HAVE to use XCode on iOS meaning I could only develop with a Mac but I can probably get away with just using 'Android Studio' later on anyway.
+
+I think the safest route would be to just make it in web, test in browser with a 'mobile' view, and test later upon deployment of the app on a site like 'Render.com' or something.
+
+I then ran the following command to create the default 'expo' app within a 'client' folder since I wanted to maintain the same kind of structure as the Flatiron projects where the 'client' folder stores the frontend facing app, and everything else in the root directory is the backend app itself (in this case, the C# / ASP.NET backend portion of the app):
+#+begin_src bash
+sam@notestation ~/hub/Registree $ npx create-expo-app client
+Need to install the following packages:
+  create-expo-app@1.3.3
+Ok to proceed? (y) Y
+✔ Downloaded and extracted project files.
+> npm install
+npm WARN deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs
+npm WARN deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+npm WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+npm WARN deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+npm WARN deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm WARN deprecated uglify-es@3.3.9: support for ECMAScript is superseded by `uglify-js` as of v3.13.0
+
+added 1216 packages, and audited 1217 packages in 47s
+
+62 packages are looking for funding
+  run `npm fund` for details
+
+14 vulnerabilities (9 moderate, 5 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+
+✅ Your project is ready!
+
+To run your project, navigate to the directory and run one of the following npm commands.
+
+- cd client
+- npm run android
+- npm run ios # you need to use macOS to build the iOS project - use the Expo app if you need to do iOS development without a Mac
+- npm run web
+#+end_src
+
+I then cd'd to the 'client' folder, and ran the 'npm run web' command:
+#+begin_src bash
+sam@notestation ~/hub/Registree/client $ npm run web
+
+> client@1.0.0 web
+> expo start --web
+
+Starting project at /home/sam/hub/Registree/client
+CommandError: It looks like you're trying to use web support but don't have the required dependencies installed.
+
+Please install react-native-web@~0.18.10, react-dom@18.2.0, @expo/webpack-config@^18.0.1 by running:
+
+npx expo install react-native-web@~0.18.10 react-dom@18.2.0 @expo/webpack-config@^18.0.1
+
+If you're not using web, please ensure you remove the "web" string from the platforms array in the project Expo config.
+#+end_src
+
+With this error message in mind, I installed the related dependencies with this command:
+#+begin_src bash
+npx expo install react-native-web@~0.18.10 react-dom@18.2.0 @expo/webpack-config@^18.0.1
+#+end_src
+
+Related output:
+#+begin_src bash
+sam@notestation ~/hub/Registree/client $ npx expo install react-native-web@~0.18.10 react-dom@18.2.0 @expo/webpack-config@^18.0.1
+› Installing 3 SDK 48.0.0 compatible native modules using npm
+> npm install
+npm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+
+added 359 packages, and audited 1576 packages in 23s
+
+102 packages are looking for funding
+  run `npm fund` for details
+
+15 vulnerabilities (10 moderate, 5 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+#+end_src
+
+I then proceeded with running the 'npm run web' command again, and received the following output:
+#+begin_src bash
+sam@notestation ~/hub/Registree/client $ npm run web
+
+> client@1.0.0 web
+> expo start --web
+
+Starting project at /home/sam/hub/Registree/client
+Starting Metro Bundler
+Starting Webpack on port 19006 in development mode.
+
+› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
+
+› Web is waiting on http://localhost:19006
+
+› Press a │ open Android
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+
+› Press ? │ show all commands
+#+end_src
+
+<2023-05-19 Fri 15:47>: The 'Expo' app on Android doesn't seem to be working but utilizing the 'http://localhost:19006/' local web address seems to be fine within Firefox without an issue.
+
+<2023-05-19 Fri 15:49>: I checked the error log for the 'Expo' mobile app, and received the following:
+#+begin_src bash
+Uncaught Error: java.net SocketTimeoutException: failed to connect to /192.168.0.100 (port 19000) from /192.168.0.102 (port 57244) after 10000 ms
+15:48:59 Fatal Error
+#+end_src
+
+I researched this particular 'Uncaught Error: java.net SocketTimeoutException: failed to connect to' error, and found these related posts:
+- https://github.com/expo/create-react-native-app/issues/876
+- https://stackoverflow.com/questions/66996249/uncaught-error-java-net-sockettimeoutexception-failed-to-connect-to-192-168-0
+
+I then was led to this page to enable the 'Developer Mode' on my Google Pixel phone which I enabled by going to Settings > About phone > and tapped on the 'Build number' 7 times:
+- https://developer.android.com/studio/debug/dev-options
+
+<2023-05-19 Fri 16:08>: I did further research on this, and this appears to be an issue with my router configuration probably according to this article:
+- https://mdi.hashnode.dev/react-native-issue-fix-network-response-time-out-error-when-attempting-to-connect-to-expo-app-on-mobile-device
+
+With this in mind, I used the suggested command:
+#+begin_src bash
+npx expo start --tunnel
+#+end_src
+
+And now, I'm able to see 'Open up App.js to start working on your app!' default message on the Google Pixel phone as well.
+
+<2023-05-19 Fri 16:13>: I think for now, I will just develop the 'web' version and model the browser to appear like a Google Pixel for now since I think I will actually need a USB cable for this kind of development later on.
+
+<2023-05-19 Fri 16:34>: I am slowly building the page to spec, but am quickly realizing that you can't just use basic HTML to do so like a normal 'React' app would.
+
+This is confirmed through this StackOverflow post:
+- https://stackoverflow.com/questions/29334984/render-html-in-react-native
+
+I found this because I was trying to figure out how to use basic div tags to section off the app for various sections.
+
+The idea is
+
+<2023-05-19 Fri 16:41>: I then found out by literally researching 'div tag equivalent in React Native' that there IS a component in React Native that is basically a container similar to a 'div' tag in React Native, and it's name is 'View':
+- https://reactnative.dev/docs/view
+
+<2023-05-19 Fri 16:57>: I am slowly getting there to be able to add the React Native app components to match the wireframe.
+
+It's not as quick as just using HTML though so its very barebones and elementary right now, but I'm getting there thankfully.
 
 ** Complete
 *** DONE Come up with app name that doesn't already exist
