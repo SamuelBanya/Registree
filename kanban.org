@@ -2,12 +2,31 @@
 #+PRIORITIES: 1 5 3
 * Jira Tickets
 ** Todo
+*** TODO Add the 'ASP.NET' backend to the project as well
+<2023-05-19 Fri 14:01>: I plan on adding the 'ASP.NET' backend later.
+
+Related links to use for reference:
+- Related API link to ASP.NET API:
+- https://dotnet.microsoft.com/en-us/apps/aspnet/apis
+- Related general ASP.NET link as well:
+- https://dotnet.microsoft.com/en-us/apps/aspnet
+
+I will have to create a related database schema for what I expect to store in the backend.
+
+From the top of my head, this is probably what I should use in terms of database entries for anyone who wants to 'login' to the app to create private lists since I want people to just use the app if they don't care about privacy, but give them the option to be a bit more secure if they want to:
+- User:
+- Email address
+- Instagram account
+- Facebook account
+- TikTok account
+
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
 ** In Progress
-*** IN-PROGRESS Research guides on how to incorporate React Native with Entity framework (C# / .NET) and get the basic 'Create React Native App' going to further build upon
-<2023-05-18 Thu 16:36>: This looks like a promising guide to check out:
-- https://www.freecodecamp.org/news/create-a-react-app-with-a-dot-net-backend/
+*** IN-PROGRESS Utilize 'Create React Native' app first so that I can template it to the Figma design template accordingly
+<2023-05-19 Fri 14:01>: I will utilize the React Native docs first here to create the related 'Create React Native' app accordingly:
+- https://reactnative.dev/
+
 ** Complete
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
@@ -131,3 +150,26 @@ Also, this app is going to come in super handy for my actual baby shower registr
 I will now proceed with actually creating the app, and making this screen a reality. Reason being is that it is better to do this in waves than to have an entire design that doesn't work, or put in so much effort into the design but not actually getting deep in the weeds to develop the app itself.
 
 Looking forward to next steps :)
+*** DONE Research guides on how to incorporate React Native with Entity framework (C# / .NET) and get the basic 'Create React Native App' going to further build upon
+<2023-05-18 Thu 16:36>: This looks like a promising guide to check out:
+- https://www.freecodecamp.org/news/create-a-react-app-with-a-dot-net-backend/
+
+<2023-05-19 Fri 13:57>: I did a bit of research, and found this particular Reddit post:
+- https://www.reddit.com/r/reactnative/comments/p9ncor/aspnet_with_react_native/
+
+Basically, you can just create the React Native app to begin with, and then add the ASP.NET backend later at any time.
+
+I think I will proceed with tihs in mind.
+
+<2023-05-19 Fri 13:58>: Another piece of advice in that same Reddit thread was this:
+#+begin_src text
+And for ASP.NET you just want to be running it as an API. So try looking at their API docs.
+#+end_src
+
+Related API link to ASP.NET API:
+- https://dotnet.microsoft.com/en-us/apps/aspnet/apis
+
+Related general ASP.NET link as well:
+- https://dotnet.microsoft.com/en-us/apps/aspnet
+
+With this in mind, I think this research is complete as I will focus on creating the React Native portion first, and then add the ASP.NET backend afterwards.
