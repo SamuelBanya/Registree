@@ -2,67 +2,12 @@
 #+PRIORITIES: 1 5 3
 * Jira Tickets
 ** Todo
-*** TODO Research guides on how to incorporate React Native with Entity framework (C# / .NET)
-<2023-05-18 Thu 16:36>: This looks like a promising guide to check out:
-- https://www.freecodecamp.org/news/create-a-react-app-with-a-dot-net-backend/
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
 ** In Progress
-*** IN-PROGRESS Make Figma wireframe template for website, iPad, and mobile (iPhone / Android)
-<2023-05-16 Tue 11:24>: I need to make a Figma wireframe that incorporates the following design patterns:
-- Website (normal desktop resolution)
-- iPad
-- Mobile devices (iPhone, Android)
-
-There are simpler ways to deal with this using the '@media' tag so try this method first, or see if React Native allows you to do this automatically.
-
-Or, see if Tailwind CSS or Material UI can be used for this purpose alone.
-
-<2023-05-16 Tue 11:42>: I really like how this form looks, so this would be a good design idea for the 'login' / 'register' screen:
-- https://www.brandbucket.com/app-name-generator
-
-<2023-05-18 Thu 14:56>: My current design template can be found here:
-- https://www.figma.com/file/1Bs8zp5JTaQrc2IvCFwrpH/Registree
-
-Some good guides and resources I found along the way include the following:
-- https://hackernoon.com/10-best-free-vector-icon-resources-for-app-design-web-design-in-2018-24e02704331b
-- https://www.freepik.com/
-
-In my search to find the '2x3' circle grid icon, I found this really good explanation of the colloquial names for some of the menu icons in general:
-- https://ux.stackexchange.com/questions/115468/what-is-the-difference-between-these-2-menu-icons-3-dots-kebab-and-3-lines-h
-
-I found this one to be close, but it's '3x3' instead:
-- https://www.freepik.com/free-icon/menu_15601292.htm
-
-I went ahead and modified that grid icon to be '2x3' instead manually, so I was able to fix the problem.
-
-I really like the style of these kind of black and white icons here but these are primarily for social media:
-- https://www.freepik.com/free-vector/social-media-icons-vector-set-with-facebook-instagram-twitter-tiktok-youtube-logos_17221200.htm#query=Amazon%20icon&position=0&from_view=search&track=ais
-
-<2023-05-18 Thu 16:18>: I found the Amazon icon here and they even offer svg icons too:
-- https://icons8.com/icons/set/amazon
-
-I found the eBay one right here too:
-- https://icons8.com/icons/set/ebay
-
-I found the Walmart icon here:
-- https://icons8.com/icons/set/walmart
-
-I found the Target icon here:
-- https://icons8.com/icons/set/target-logo
-
-<2023-05-18 Thu 16:57>: For the bottom buttons of the app, I can easily just find related SVG icons for something like the following:
-- Lists
-- Share
-- Profile
-
-I would be interested if I could find a way to somehow take the existing mobile ready frame design and just scale it up to iPad without heavily having to adjust sizes too much. There's got to be a way to do this, so I will do some research into this.
-
-Also, this app is going to come in super handy for my actual baby shower registry coming up this year :)
-
-<2023-05-18 Thu 17:15>: Also, for future reference, here is the Linktree image I used as a reference for the overall design since this is really just a clone app that's taken to the next level with a separate mindset:
-- https://linktr.ee/blog/the-power-of-linktree-in-the-palm-of-your-hand-introducing-our-new-mobile-app/
-
+*** IN-PROGRESS Research guides on how to incorporate React Native with Entity framework (C# / .NET) and get the basic 'Create React Native App' going to further build upon
+<2023-05-18 Thu 16:36>: This looks like a promising guide to check out:
+- https://www.freecodecamp.org/news/create-a-react-app-with-a-dot-net-backend/
 ** Complete
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
@@ -113,3 +58,76 @@ The main ideas I want to get across in a name is the idea to share gifts easily 
 I wanted to basically do what Linktree is doing, but for gifts since I always hated having to figure out what people wanted for Christmas because they never sent me a list of what to surprise them with.
 
 <2023-05-18 Thu 13:34>: I settled with the name 'Registree' so I'm glad that's not taken. It's crazy since every other single name pretty was taken but I guess this is a very popular idea to do, so time for my spin on it :)
+*** DONE Make Figma wireframe template for website, iPad, and mobile (iPhone / Android) versions of the "Registree" portion of the application
+<2023-05-16 Tue 11:24>: I need to make a Figma wireframe that incorporates the following design patterns:
+- Website (normal desktop resolution)
+- iPad
+- Mobile devices (iPhone, Android)
+
+There are simpler ways to deal with this using the '@media' tag so try this method first, or see if React Native allows you to do this automatically.
+
+Or, see if Tailwind CSS or Material UI can be used for this purpose alone.
+
+<2023-05-16 Tue 11:42>: I really like how this form looks, so this would be a good design idea for the 'login' / 'register' screen:
+- https://www.brandbucket.com/app-name-generator
+
+<2023-05-18 Thu 14:56>: My current design template can be found here:
+- https://www.figma.com/file/1Bs8zp5JTaQrc2IvCFwrpH/Registree
+
+Some good guides and resources I found along the way include the following:
+- https://hackernoon.com/10-best-free-vector-icon-resources-for-app-design-web-design-in-2018-24e02704331b
+- https://www.freepik.com/
+
+In my search to find the '2x3' circle grid icon, I found this really good explanation of the colloquial names for some of the menu icons in general:
+- https://ux.stackexchange.com/questions/115468/what-is-the-difference-between-these-2-menu-icons-3-dots-kebab-and-3-lines-h
+
+I found this one to be close, but it's '3x3' instead:
+- https://www.freepik.com/free-icon/menu_15601292.htm
+
+I went ahead and modified that grid icon to be '2x3' instead manually, so I was able to fix the problem.
+
+I really like the style of these kind of black and white icons here but these are primarily for social media:
+- https://www.freepik.com/free-vector/social-media-icons-vector-set-with-facebook-instagram-twitter-tiktok-youtube-logos_17221200.htm#query=Amazon%20icon&position=0&from_view=search&track=ais
+
+<2023-05-18 Thu 16:18>: I found the Amazon icon here and they even offer svg icons too:
+- https://icons8.com/icons/set/amazon
+
+I found the eBay one right here too:
+- https://icons8.com/icons/set/ebay
+
+I found the Walmart icon here:
+- https://icons8.com/icons/set/walmart
+
+I found the Target icon here:
+- https://icons8.com/icons/set/target-logo
+
+I found the Clipboard icon here:
+- https://icons8.com/icons/set/clipboard-icon
+
+I found a more black color themed clipboard icon here:
+- https://freesvg.org/checklist-silhouette
+
+I found the Share icon here:
+- https://icons8.com/icon/set/share/sf-black-filled
+
+I found the Profile icon here:
+- https://freesvg.org/users-profile-icon
+
+<2023-05-18 Thu 16:57>: For the bottom buttons of the app, I can easily just find related SVG icons for something like the following:
+- Lists
+- Share
+- Profile
+
+I would be interested if I could find a way to somehow take the existing mobile ready frame design and just scale it up to iPad without heavily having to adjust sizes too much. There's got to be a way to do this, so I will do some research into this.
+
+Also, this app is going to come in super handy for my actual baby shower registry coming up this year :)
+
+<2023-05-18 Thu 17:15>: Also, for future reference, here is the Linktree image I used as a reference for the overall design since this is really just a clone app that's taken to the next level with a separate mindset:
+- https://linktr.ee/blog/the-power-of-linktree-in-the-palm-of-your-hand-introducing-our-new-mobile-app/
+
+<2023-05-19 Fri 13:53>: I have completed the initial wireframe of the "Registrees" screen, which can be found here:
+- https://www.figma.com/file/1Bs8zp5JTaQrc2IvCFwrpH/Registree
+
+I will now proceed with actually creating the app, and making this screen a reality. Reason being is that it is better to do this in waves than to have an entire design that doesn't work, or put in so much effort into the design but not actually getting deep in the weeds to develop the app itself.
+
+Looking forward to next steps :)
