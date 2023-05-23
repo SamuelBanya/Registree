@@ -198,6 +198,15 @@ The idea is
 
 It's not as quick as just using HTML though so its very barebones and elementary right now, but I'm getting there thankfully.
 
+<2023-05-22 Mon 20:16>: Two things I can look into to solve the width and height dimensions issue in this case is to use the 'useWindowDimensions' API:
+- https://reactnative.dev/docs/usewindowdimensions
+
+It appears to be an idea in which you can just assign a constant variable's values to the output of the 'useWindowDimensions' API according the MDN docs page:
+- https://reactnative.dev/docs/usewindowdimensions
+
+The 'PixelRatio' API might be helpful for pictures being displayed across multiple devices running the application as well:
+- https://reactnative.dev/docs/pixelratio.html
+
 ** Complete
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:

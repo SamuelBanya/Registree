@@ -1,7 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 
 export default function App() {
+  // Grab 'height', 'width', 'scale', and 'fontScale' using the 'useWindowDimensions' API
+  // so that we can scale the app's window size accordingly:
+  const { height, width, scale, fontScale } = useWindowDimensions();
+
   return (
     // Overall container for app:
     <View styles={styles.appContainer}>
