@@ -8,7 +8,7 @@ export default function App() {
 
   return (
     // Overall container for app:
-    <View styles={styles.appContainer}>
+    <View style={styles.appContainer}>
       {/* Top menu for desktop web use only: */}
       <View>
       </View>
@@ -46,7 +46,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
-    backgroundColor: 'red'
+    
+    backgroundColor: 'rgb(52,53,52); linear-gradient(90deg, rgba(52,53,52,1) 0%, rgba(31,112,78,1) 50%, rgba(14,166,102,1) 100%);'
   },
   header: {
     fontSize: '50px',
