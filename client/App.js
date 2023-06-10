@@ -59,17 +59,19 @@ export default function App() {
           </View>
         </View>
         {/* Buttons footer for mobile and iPad: */}
-        <View style={styles.bottomBackground}>
-          <Button 
-            title="Registrees"
-          />
-          <Button 
-            title="Share"
-          />
-          <Button 
-            title="Profile"
-          />
-        </View>
+        <LinearGradient colors={["#11be6b", "#0dca71", "#0ad475"]} style={styles.bottomGreenGradient}>
+          <View style={styles.bottomBackground}>
+            <Button 
+              title="Registrees"
+            />
+            <Button 
+              title="Share"
+            />
+            <Button 
+              title="Profile"
+            />
+          </View>
+        </LinearGradient>
       </View>
     </LinearGradient>
   );
@@ -89,9 +91,11 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     borderRadius: 5
   },
-  bottomBackground: {
-    // backgroundColor: "#10c36e"
-    color: "#000000"
+  bottomGreenGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
   },
   header: {
     fontSize: '50px',
