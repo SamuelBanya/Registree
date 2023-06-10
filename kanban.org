@@ -47,6 +47,68 @@ npm install react-native-linear-gradient --save
 
 <2023-06-10 Sat 10:42>: I will have to actually model the Figma template later but it doesn't look that hard based upon the docs above.
 
+<2023-06-10 Sat 10:44>: This is the related CSS gradient I got from a related site (https://cssgradient.io/):
+#+BEGIN_SRC css
+background: rgb(52,53,52);
+background: linear-gradient(90deg, rgba(52,53,52,1) 0%, rgba(31,112,78,1) 50%, rgba(14,166,102,1) 100%);
+#+END_SRC
+
+<2023-06-10 Sat 13:10>: I got this error when trying to implement 'react-native-linear-gradient':
+#+BEGIN_SRC bash
+Uncaught TypeError: react_native_web_dist_index__WEBPACK_IMPORTED_MODULE_0__.requireNativeComponent is not a function
+    js common.js:6
+    Webpack 15
+#+END_SRC
+
+After looking into this, this is as a result of me using 'Expo', which is noted on this GitHub Issues page:
+- https://github.com/react-native-linear-gradient/react-native-linear-gradient/issues/483
+
+As the last commenter pointed out, I should probably use 'Expo LinearGradient' instead:
+- https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+
+I then installed it via this command:
+#+BEGIN_SRC bash
+npx expo install expo-linear-gradient
+#+END_SRC
+
+<2023-06-10 Sat 13:49>: I did more attempts to model the buttons after my Figma which were kind of weird because using the 'color' property was not even getting me anywhere like it should.
+
+That being noted, I found this related StackOverflow post:
+- https://stackoverflow.com/questions/44798426/how-to-change-background-color-of-react-native-button
+
+It basically states to just use 'React Native Elements' package for styling buttons via the 'buttonStyle' tag accordingly.
+
+With this in mind, I installed it via this command:
+#+BEGIN_SRC bash
+npm install @rneui/themed @rneui/base
+npm install react-native-safe-area-context
+#+END_SRC
+
+<2023-06-10 Sat 14:42>: I had to sift through 3 pages just to figure out how to make bold text for a header for React Native:
+- https://stackoverflow.com/questions/35718143/react-native-add-bold-or-italics-to-single-words-in-text-field
+
+I also used the following pages as references to implement 'React-Native-Elements' versions of 'Button', 'Text' and 'Switch' fields along with their appropriate styling:
+- https://reactnativeelements.com/docs/components/button#colors
+- https://reactnativeelements.com/docs/components/text
+- https://reactnativeelements.com/docs/components/switch
+
+<2023-06-10 Sat 15:02>: So far today, I added the following:
+- [X] Background gradient
+- [X] Button styling
+- [X] Bold styling to headers
+- [X] Switch buttons
+
+The thing is though, the design still doesn't really match the Figma so it has been an uphill battle.
+
+Honestly, I think the fact that it differs so much from normal React is what makes this process so much harder than it should be.
+
+Even for this 'Link' page that's the home page, I still need to add:
+- [ ] The '2x3' move button to be able to move the Registrees around
+- [ ] I need the 'Add New Registree' button to actually have black text
+- [ ] I need to be able to add the appropriate store icons to the bottom of each Registree container section
+- [ ] The 'Registrees', 'Share', and 'Profile' buttons need to be stacked alongside each other
+- [ ] The same 'Registrees', 'Share', and 'Profile' buttons need to be replaced with icons from 'React-icons' (https://react-icons.github.io/react-icons/)
+
 ** Complete
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
