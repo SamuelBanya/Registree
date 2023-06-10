@@ -109,6 +109,21 @@ Even for this 'Link' page that's the home page, I still need to add:
 - [ ] The 'Registrees', 'Share', and 'Profile' buttons need to be stacked alongside each other
 - [ ] The same 'Registrees', 'Share', and 'Profile' buttons need to be replaced with icons from 'React-icons' (https://react-icons.github.io/react-icons/)
 
+<2023-06-10 Sat 15:20>: One thing I should maybe consider later is to add 'react-native-material' to the project since you can use 'Stack' sections to stack the buttons together more easily:
+- https://www.react-native-material.com/
+- https://www.react-native-material.com/docs/layout/stack
+
+It HAS to be what 'React Native Elements' is using since they are literally using 'Stack' elements in their 'Button' example, yet 'Stack' elements are specific to MUI:
+- https://reactnativeelements.com/docs/components/button
+
+Or, I could opt to just use 'flex' options for the containers themselves as shown in this example:
+- https://snack.expo.dev/@awhite/two-buttons-with-equal-width-horizontally-fill-the-screen-in-react-native
+
+Or, I could even opt for a vanilla approach using 'flex' options here too from the React Native docs:
+- https://snack.expo.dev/@awhite/two-buttons-with-equal-width-horizontally-fill-the-screen-in-react-native
+
+Choices and decisions for sure :)
+
 ** Complete
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
