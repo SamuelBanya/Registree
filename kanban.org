@@ -2,7 +2,6 @@
 #+PRIORITIES: 1 5 3
 * Jira Tickets
 ** Todo
-*** TODO Match Figma template to React site
 *** TODO Add the 'ASP.NET' backend to the project as well
 <2023-05-19 Fri 14:01>: I plan on adding the 'ASP.NET' backend later.
 
@@ -33,15 +32,35 @@ Related guides for reference:
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
 ** In Progress
-*** IN-PROGRESS Use 'create-react-app' to create another frontend site for this project, and enforce Typescript
-<2023-06-18 Sun 16:10>: I would like to start from scratch and just use the 'create-react-app' to create another React site, and enforce Typescript.
+*** IN-PROGRESS Match Figma template of front page to React site
+<2023-07-01 Sat 15:11>: I am currently in the process of basically moving the 'my-app' section that was created by 'create-react-app' to the root directory.
 
-<2023-06-18 Sun 16:14>: I found the related docs page on this topic since you can install 'create-react-app' and enforce TypeScript from the start:
-- https://create-react-app.dev/docs/adding-typescript/
+I then am going to add Material UI to match what is done at work just because its better to just skill up to match their current requirements.
 
-Related command:
+After that, I will flat out try to copy the design one for one, and make it responsive as well.
+
+<2023-07-01 Sat 15:14>: I installed MaterialUI via this command:
 #+begin_src bash
-yarn create react-app my-app --template typescript
+sam@notestation ~/hub/Registree/client $ npm install @mui/material @emotion/react @emotion/styled
+#+end_src
+
+I then installed the related 'Roboto' font as requested by MaterialUI:
+#+begin_src bash
+sam@notestation ~/hub/Registree/client $ npm install @fontsource/roboto
+#+end_src
+
+I then added the 'Roboto' font to the 'entry point' of the application which is 'src/index.tsx':
+#+begin_src js
+// Adding MaterialUI's 'roboto' font:
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+#+end_src
+
+I then added the 'font Icon component' with the following command:
+#+begin_src bash
+sam@notestation ~/hub/Registree/client $ npm install @mui/icons-material
 #+end_src
 
 ** COMPLETED TASKS
@@ -380,6 +399,18 @@ I verified the Yarn installation with the output of this command:
 sam@notestation ~/hub/Registree/client $ yarn --version
 1.22.19
 #+end_src
+*** DONE Use 'create-react-app' to create another frontend site for this project, and enforce Typescript
+<2023-06-18 Sun 16:10>: I would like to start from scratch and just use the 'create-react-app' to create another React site, and enforce Typescript.
+
+<2023-06-18 Sun 16:14>: I found the related docs page on this topic since you can install 'create-react-app' and enforce TypeScript from the start:
+- https://create-react-app.dev/docs/adding-typescript/
+
+Related command:
+#+begin_src bash
+yarn create react-app my-app --template typescript
+#+end_src
+
+<2023-07-01 Sat 15:10>: I did this already during the last time I worked on this project so this task is complete.
 ** TASKS THAT ARE CANCELLED
 *** CANCELLED Match Figma template to actual React Native App for 'List' page
 <2023-06-10 Sat 10:33>: The current goal is to get the 'List' page to match my Figma template.
