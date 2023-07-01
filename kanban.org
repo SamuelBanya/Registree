@@ -63,6 +63,14 @@ I then added the 'font Icon component' with the following command:
 sam@notestation ~/hub/Registree/client $ npm install @mui/icons-material
 #+end_src
 
+I also utilized the Material UI example to just add a button on the main page:
+- https://mui.com/material-ui/getting-started/usage/
+
+<2023-07-01 Sat 16:24>: Since the re-organization took a bit of effort, I think for next time, my goal is to:
+- Create a separate 'Registree' component in the 'client/src/components' directory
+- I will then try to make it match the Figma template using 'Grid' components from Material UI:
+- https://mui.com/material-ui/react-grid/
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
