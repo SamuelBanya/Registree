@@ -71,6 +71,20 @@ I also utilized the Material UI example to just add a button on the main page:
 - I will then try to make it match the Figma template using 'Grid' components from Material UI:
 - https://mui.com/material-ui/react-grid/
 
+<2023-07-22 Sat 23:07>: I am in the process of adding changes to this particular branch of the project:
+- https://github.com/SamuelBanya/Registree/tree/Make-Homepage-Model-Figma
+
+After my changes are done, I will then merge this branch into main.
+
+I had to lean on these docs pages to get icons from 'react-icons' into the project, as well as how to use 'IconButtons' from Material UI directly:
+- https://react-icons.github.io/react-icons
+- https://mui.com/material-ui/react-button/
+
+I also incorporated the 'Switch' button for the 'toggle' style button as well from Material UI:
+- https://mui.com/material-ui/react-switch/
+
+So far, I kind of have the spacing right, but the CSS needs to be flush to the left and right for each section. This will require some more research on Material UI directly.
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
