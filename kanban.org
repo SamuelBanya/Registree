@@ -85,6 +85,68 @@ I also incorporated the 'Switch' button for the 'toggle' style button as well fr
 
 So far, I kind of have the spacing right, but the CSS needs to be flush to the left and right for each section. This will require some more research on Material UI directly.
 
+<2023-07-29 Sat 11:21>: I tried to hone in more on the Figma design itself this morning, and made a few revisions.
+
+I found the 'Inter' font used by Figma here:
+- https://fonts.google.com/specimen/Inter?preview.text=asdf&preview.text_type=custom
+
+I then found this related StackOverflow post on the topic of importing Google fonts into a React project here:
+- https://stackoverflow.com/questions/40769551/how-to-use-google-fonts-in-react-js
+
+I then modified the related 'App.css' file to include:
+#+begin_src css
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+#+end_src
+
+I then adjusted the 'Add Registree Button' button's CSS:
+#+begin_src css
+#Add-Registree-Button {
+  border-radius: 20px;
+  border: 5px solid #3AFF7D;
+  background-color: #FFF;
+  /* color: black; */
+  /* font-weight: 700; */
+  font-family: "Inter", sans-serif;
+
+  color: #000;
+  font-family: Inter;
+  /* font-size: 50px; */
+  font-style: bold;
+  /* font-weight: 700; */
+}
+#+end_src
+
+I solved the issue of the entire 'Add Registree Button' button not being the entire width of the screen by adding the 'fullWidth' to the button itself:
+#+begin_src html
+          <Grid item xs={12}>
+            <Button fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
+          </Grid>
+#+end_src
+
+Related Material UI docs page on 'fullWidth' boolean variable:
+- https://mui.com/toolpad/reference/components/button/#properties
+
+I then solved the issue with the 'Item' blocks containing white background colors by removing all 'Item' tags from the Grids, and then added an overarching gradient for the '.App':
+#+begin_src css
+.App {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(180deg, #414141 0%, rgba(65, 65, 65, 0.00) 100%), #00FF94;
+}
+#+end_src
+
+I then found out about the 'Stack' component that can be used to align elements in a row via this page example here:
+- https://mui.com/material-ui/react-button/
+
+Here is the more specific 'Stack' component docs page:
+- https://mui.com/material-ui/react-stack/
+
+I then applied individual Icon Button changes via the 'sx' prop here:
+- https://mui.com/material-ui/api/icon-button/
+
+My goal is once it actually all works, I will probably just create my own version of the 'Icon Button' component so that I don't have to specify the 'sx' props in the open like the current version of the project.
+
+<2023-07-29 Sat 11:38>: After looking in the related MaterialUI docs, I found the 'justifyContent' boolean variable so that I can align the icon buttons in a row:
+- https://mui.com/material-ui/react-stack/
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:

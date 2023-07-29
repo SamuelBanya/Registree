@@ -12,113 +12,122 @@ import { MdDragIndicator } from "react-icons/md";
 import { FaAmazon, FaEbay, FaClipboard } from "react-icons/fa";
 import { FaShareNodes, FaUser } from "react-icons/fa6";
 import { SiTarget } from "react-icons/si";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+import Stack from '@mui/material/Stack';
+import MenuGrid from "./src/components/MenuGrid";
 
 function App() {
+
   return (
     <div className="App">
-      <h1>Registrees</h1>
-      <Box sx={{ flexGrow: 1 }}>
+      <Grid item xs={12} className="Desktop-menu-grid">
+        <Stack 
+          direction="row" 
+          alignItems="center" 
+          spacing={12} 
+          justifyContent="center"
+        >
+          <Grid item xs={4}>
+            <IconButton 
+              sx={{ 
+                width: "250px",
+                height: "85px",
+                backgroundColor: "#FFF",
+                borderRadius: "15px",
+                border: "4px solid #000",
+              }}
+              aria-label="View current user's Registrees"
+            >
+              <FaClipboard />
+            </IconButton>
+          </Grid>
+          <Grid item xs={4}>
+            <IconButton 
+              sx={{ 
+                width: "250px",
+                height: "85px",
+                backgroundColor: "#FFF",
+                borderRadius: "15px",
+                border: "4px solid #000",
+              }}
+              aria-label="Share current user's Registrees"
+            >
+              <FaShareNodes />
+            </IconButton>
+          </Grid>
+          <Grid item xs={4}>
+            <IconButton 
+              sx={{ 
+                width: "250px",
+                height: "85px",
+                backgroundColor: "#FFF",
+                borderRadius: "15px",
+                border: "4px solid #000",
+              }}
+              aria-label="View current user's profile"
+            >
+              <FaUser />
+            </IconButton>
+          </Grid>
+        </Stack>
+      </Grid>
+      <Box 
+        sx={{ 
+          flexGrow: "1",
+          marginLeft: "40px",
+          marginRight: "40px"
+        }}
+      >
+        <Grid item xs={12}>
+          <h1>Registrees</h1>
+        </Grid>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Item>
-              <Button variant="contained">Add New Registrees</Button>
-            </Item>
+            <Button fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
+          </Grid>
+          <MenuGrid>
+            <Grid item xs={2}>
+              <IconButton aria-label="Drag a Registree to a different position on screen">
+                <MdDragIndicator />
+              </IconButton>
+            </Grid>
+            <Grid item xs={8}>
+              <h2>Mom's Christmas List</h2>
+              <h3>Registree.xyz/mom101</h3>
+              <FaAmazon />
+            </Grid>
+            <Grid item xs={2}>
+              <Switch />
+            </Grid>
+          </MenuGrid>
+          <Grid item xs={12}>
+            <Grid item xs={2}>
+              <IconButton aria-label="Drag a Registree to a different position on screen">
+                <MdDragIndicator />
+              </IconButton>
+            </Grid>
+            <Grid item xs={8}>
+              <h2>Sam's Birthday List</h2>
+              <h3>Registree.xyz/sam123</h3>
+              <FaEbay />
+            </Grid>
+            <Grid item xs={2}>
+              <Switch />
+            </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Item>
-              <Grid item xs={2}>
-                <Item>
-                  <IconButton aria-label="Drag a Registree to a different position on screen">
-                    <MdDragIndicator />
-                  </IconButton>
-                </Item>
-              </Grid>
-              <Grid item xs={8}>
-                  <h2>Mom's Christmas List</h2>
-                  <h3>Registree.xyz/mom101</h3>
-                  <FaAmazon />
-              </Grid>
-              <Grid item xs={2}>
-                <Item>
-                  <Switch />
-                </Item>
-              </Grid>
-            </Item>
-          </Grid>
-          <Grid item xs={12}>
-            <Item>
-              <Grid item xs={2}>
-                <Item>
-                  <IconButton aria-label="Drag a Registree to a different position on screen">
-                    <MdDragIndicator />
-                  </IconButton>
-                </Item>
-              </Grid>
-              <Grid item xs={8}>
-                  <h2>Sam's Birthday List</h2>
-                  <h3>Registree.xyz/sam123</h3>
-                  <FaEbay />
-              </Grid>
-              <Grid item xs={2}>
-                <Item>
-                  <Switch />
-                </Item>
-              </Grid>
-            </Item>
-          </Grid>
-          <Grid item xs={12}>
-            <Item>
-              <Grid item xs={2}>
-                <Item>
-                  <IconButton aria-label="Drag a Registree to a different position on screen">
-                    <MdDragIndicator />
-                  </IconButton>
-                </Item>
-              </Grid>
-              <Grid item xs={8}>
-                  <h2>Tina's Wedding Registry List</h2>
-                  <h3>Registree.xyz/tina456</h3>
-                  <SiTarget />
-              </Grid>
-              <Grid item xs={2}>
-                <Item>
-                  <Switch />
-                </Item>
-              </Grid>
-            </Item>
-          </Grid>
-          <Grid item xs={12}>
-            <Item>
-                <Grid item xs={4}>
-                  <Item>
-                    <IconButton aria-label="View current user's Registrees">
-                      <FaClipboard />
-                    </IconButton>
-                  </Item>
-                </Grid>
-                <Grid item xs={4}>
-                  <Item>
-                    <IconButton aria-label="View current user's Registrees">
-                      <FaShareNodes />
-                    </IconButton>
-                  </Item>
-                </Grid>
-                <Grid item xs={4}>
-                  <Item>
-                    <IconButton aria-label="View current user's Registrees">
-                      <FaUser />
-                    </IconButton>
-                  </Item>
-                </Grid>
-            </Item>
+            <Grid item xs={2}>
+              <IconButton aria-label="Drag a Registree to a different position on screen">
+                <MdDragIndicator />
+              </IconButton>
+            </Grid>
+            <Grid item xs={8}>
+              <h2>Tina's Wedding Registry List</h2>
+              <h3>Registree.xyz/tina456</h3>
+              <SiTarget />
+            </Grid>
+            <Grid item xs={2}>
+              <Switch />
+            </Grid>
           </Grid>
         </Grid>
       </Box>
