@@ -147,6 +147,13 @@ My goal is once it actually all works, I will probably just create my own versio
 <2023-07-29 Sat 11:38>: After looking in the related MaterialUI docs, I found the 'justifyContent' boolean variable so that I can align the icon buttons in a row:
 - https://mui.com/material-ui/react-stack/
 
+<2023-07-29 Sat 13:33>: I also had to separate the 'MenuGrid' into its own component since it has some specific styling that just would clutter up the main page.
+
+I realized I had to use 'ReactNode' in order for me to allow any children to be rendered between the 'MenuGrid' I created.
+
+I used this page as a reference:
+- https://www.sharooq.com/solved-type-children-element-has-no-properties-in-common-with-type-intrinsicattributes-react
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:

@@ -13,7 +13,7 @@ import { FaAmazon, FaEbay, FaClipboard } from "react-icons/fa";
 import { FaShareNodes, FaUser } from "react-icons/fa6";
 import { SiTarget } from "react-icons/si";
 import Stack from '@mui/material/Stack';
-import MenuGrid from "./src/components/MenuGrid";
+import MenuGrid from "./components/MenuGrid";
 
 function App() {
 
@@ -73,15 +73,22 @@ function App() {
       <Box 
         sx={{ 
           flexGrow: "1",
-          marginLeft: "40px",
-          marginRight: "40px"
+          marginLeft: "50px",
+          marginRight: "50px"
         }}
+        alignItems="center"
       >
         <Grid item xs={12}>
           <h1>Registrees</h1>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
+        <Grid container spacing={1}>
+          <Grid 
+            item 
+            xs={12}
+            sx={{
+              marginBottom: "50px"
+            }}
+          >
             <Button fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
           </Grid>
           <MenuGrid>
@@ -99,7 +106,7 @@ function App() {
               <Switch />
             </Grid>
           </MenuGrid>
-          <Grid item xs={12}>
+          <MenuGrid>
             <Grid item xs={2}>
               <IconButton aria-label="Drag a Registree to a different position on screen">
                 <MdDragIndicator />
@@ -113,8 +120,8 @@ function App() {
             <Grid item xs={2}>
               <Switch />
             </Grid>
-          </Grid>
-          <Grid item xs={12}>
+          </MenuGrid>
+          <MenuGrid>
             <Grid item xs={2}>
               <IconButton aria-label="Drag a Registree to a different position on screen">
                 <MdDragIndicator />
@@ -128,7 +135,7 @@ function App() {
             <Grid item xs={2}>
               <Switch />
             </Grid>
-          </Grid>
+          </MenuGrid>
         </Grid>
       </Box>
     </div>
