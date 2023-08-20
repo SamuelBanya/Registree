@@ -192,6 +192,15 @@ import '@fontsource/roboto/700.css';
 <2023-08-20 Sun 12:06>: The next thing I have to do is to actually make the CSS match, so it will take some reading more into the actual guide itself, as well as some styling docs from NextJS so I can make sure that the overarching 'globals.css' stylesheet is actually included in the project as well:
 - https://nextjs.org/learn/basics/navigate-between-pages/link-component
 
+NOTE:
+- I can also look at the previous code as well just in case I am missing a few stylesheet references too:
+- https://github.com/SamuelBanya/Registree/tree/6027cd78760bf85c384902d53d38095992111284
+
+Also, here are some references I might need to use to add a 'Head' component from NextJS to potentially allow for custom fonts:
+- https://www.reddit.com/r/nextjs/comments/pfut94/how_to_load_custom_fonts_in_nextjs/
+- https://blog.logrocket.com/next-js-font-optimization-custom-google-fonts/
+- https://medium.com/frontendweb/how-to-add-font-in-next-js-7a7fba80d528
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
