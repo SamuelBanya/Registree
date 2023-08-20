@@ -31,8 +31,7 @@ Related guides for reference:
 
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
-** In Progress
-*** IN-PROGRESS Match Figma template of front page to React site
+*** TODO Match Figma template of front page to React site
 <2023-07-01 Sat 15:11>: I am currently in the process of basically moving the 'my-app' section that was created by 'create-react-app' to the root directory.
 
 I then am going to add Material UI to match what is done at work just because its better to just skill up to match their current requirements.
@@ -153,6 +152,45 @@ I realized I had to use 'ReactNode' in order for me to allow any children to be 
 
 I used this page as a reference:
 - https://www.sharooq.com/solved-type-children-element-has-no-properties-in-common-with-type-intrinsicattributes-react
+** In Progress
+*** IN-PROGRESS Convert application to 'NextJS' app
+<2023-08-20 Sun 10:41>: I realized after a bit of thinking that it would kind of pointless to use 'create-react-app' as the scaffolding for this app since Facebook (Meta) doesn't even support it anyway and pretty much abandoned it.
+
+That being noted, I might as well use NextJS anyway.
+
+With this in mind, I followed this guide:
+- https://nextjs.org/learn/basics/create-nextjs-app/setup
+
+Related command I used:
+#+begin_src bash
+npx create-next-app@latest registree --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
+#+end_src
+
+<2023-08-20 Sun 11:21>: On a side note, I also forced Typescript by literally renaming every new page to be a '.tsx' file as per this NextJS guide page that tells you that NextJS handles the rest:
+- https://nextjs.org/docs/pages/building-your-application/configuring/typescript
+
+<2023-08-20 Sun 11:49>: I also used these commands to install MaterialUI and its associated custom 'roboto' font as per my other 'Match Figma template of front page to React site' task's notes:
+#+begin_src bash
+sam@notestation ~/hub/Registree/registree $ npm install @mui/material @emotion/react @emotion/styled
+
+sam@notestation ~/hub/Registree/registree $ npm install @fontsource/roboto
+
+sam@notestation ~/hub/Registree/registree $ npm install @mui/icons-material
+
+sam@notestation ~/hub/Registree/registree $ npm install react-icons
+#+end_src
+
+I then added the font references to the 'index.tsx' page in the project:
+#+begin_src typescript
+// Adding MaterialUI's 'roboto' font:
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+#+end_src
+
+<2023-08-20 Sun 12:06>: The next thing I have to do is to actually make the CSS match, so it will take some reading more into the actual guide itself, as well as some styling docs from NextJS so I can make sure that the overarching 'globals.css' stylesheet is actually included in the project as well:
+- https://nextjs.org/learn/basics/navigate-between-pages/link-component
 
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
