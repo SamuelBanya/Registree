@@ -201,6 +201,9 @@ Also, here are some references I might need to use to add a 'Head' component fro
 - https://blog.logrocket.com/next-js-font-optimization-custom-google-fonts/
 - https://medium.com/frontendweb/how-to-add-font-in-next-js-7a7fba80d528
 
+<2023-08-29 Tue 21:03>: Here's how to actually access the latest page:
+- http://localhost:3000/registrees/registree-page
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
