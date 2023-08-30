@@ -204,6 +204,20 @@ Also, here are some references I might need to use to add a 'Head' component fro
 <2023-08-29 Tue 21:03>: Here's how to actually access the latest page:
 - http://localhost:3000/registrees/registree-page
 
+<2023-08-29 Tue 21:20>: Here's how I figured out how to actually add the appropriate global styling that I wanted to utilize, aka I followed this tutorial guide on the NextJS docs page:
+- https://nextjs.org/learn/basics/assets-metadata-css/global-styles
+
+I then added the 'pages/_app.js' which acts as more of the overarching file that dictates CSS styling:
+#+begin_src typescript
+  import '../styles/global.css';
+
+  export default function App({ Component, pageProps }) {
+    return <Component {...pageProps} />;
+  }
+#+end_src
+
+I then saved it, and that pretty much allowed the global styling to be utilized as intended.
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
