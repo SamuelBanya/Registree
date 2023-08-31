@@ -12,6 +12,7 @@ import { FaShareNodes, FaUser } from "react-icons/fa6";
 import { SiTarget } from "react-icons/si";
 import Stack from '@mui/material/Stack';
 import MenuGrid from "../../components/menu/MenuGrid";
+import { IconContext } from "react-icons/lib";
 
 export default function RegistreePage() {
   return (
@@ -21,8 +22,9 @@ export default function RegistreePage() {
           <Stack
             direction="row"
             alignItems="center"
-            spacing={12}
+            spacing={50}
             justifyContent="center"
+            padding={2.5}
           >
             <Grid item xs={4}>
               <IconButton
@@ -35,7 +37,11 @@ export default function RegistreePage() {
                 }}
                 aria-label="View current user's Registrees"
               >
-                <FaClipboard />
+                <IconContext.Provider
+                  value={{ color: "black", size: "50" }}
+                >
+                  <FaClipboard />
+                </IconContext.Provider>
               </IconButton>
             </Grid>
             <Grid item xs={4}>
@@ -49,7 +55,11 @@ export default function RegistreePage() {
                 }}
                 aria-label="Share current user's Registrees"
               >
-                <FaShareNodes />
+                <IconContext.Provider
+                  value={{ color: "black", size: "50" }}
+                >
+                  <FaShareNodes />
+                </IconContext.Provider>
               </IconButton>
             </Grid>
             <Grid item xs={4}>
@@ -63,7 +73,11 @@ export default function RegistreePage() {
                 }}
                 aria-label="View current user's profile"
               >
-                <FaUser />
+                <IconContext.Provider
+                  value={{ color: "black", size: "50" }}
+                >
+                  <FaUser />
+                </IconContext.Provider>
               </IconButton>
             </Grid>
           </Stack>

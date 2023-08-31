@@ -4,16 +4,12 @@
 #Add-Registree-Button {
   border-radius: 20px;
   border: 5px solid #3AFF7D;
-  background-color: #FFF; 
-  /* color: black; */
-  /* font-weight: 700; */
+  background-color: #FFF;
   font-family: "Inter", sans-serif;
-
   color: #000;
   font-family: Inter;
-  /* font-size: 50px; */
-  font-style: bold;
-  /* font-weight: 700; */
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .Desktop-menu-grid {
@@ -24,7 +20,7 @@
 .Desktop-icon-button {
   border-radius: 15px;
   border: 4px solid #000;
-  background-color: red; 
+  background-color: red;
 }
 
 .App {
@@ -32,13 +28,10 @@
 }
 
 .App h1 {
-  /* color: #FFC700; */
-  /* margin-left: 40px; */
-  /* font-weight: normal; */
   color: #FFC700;
   font-family: "Inter", sans-serif;
-  font-size: 40px;
+  font-size: 60px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal; 
+  line-height: normal;
 }

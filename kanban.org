@@ -153,7 +153,7 @@ I realized I had to use 'ReactNode' in order for me to allow any children to be 
 I used this page as a reference:
 - https://www.sharooq.com/solved-type-children-element-has-no-properties-in-common-with-type-intrinsicattributes-react
 ** In Progress
-*** IN-PROGRESS Convert application to 'NextJS' app
+*** IN-PROGRESS Convert application to 'NextJS' app, and adjust styling to match Figma template
 <2023-08-20 Sun 10:41>: I realized after a bit of thinking that it would kind of pointless to use 'create-react-app' as the scaffolding for this app since Facebook (Meta) doesn't even support it anyway and pretty much abandoned it.
 
 That being noted, I might as well use NextJS anyway.
@@ -217,6 +217,27 @@ I then added the 'pages/_app.js' which acts as more of the overarching file that
 #+end_src
 
 I then saved it, and that pretty much allowed the global styling to be utilized as intended.
+
+<2023-08-30 Wed 19:27>: I figured out how to force the related icons from 'React Icons' to be black, aka you have to wrap a context provider around each icon:
+- https://github.com/react-icons/react-icons#readme
+- https://stackoverflow.com/questions/56636280/how-to-style-react-icons
+
+With this in mind, I pretty much did the following as an example in which I changed the 'FaUser' icon to have a black color as opposed to the ugly default grey color:
+#+begin_src typescript
+  <IconContext.Provider
+    value={{ color: "black" }}
+  >
+    <FaUser />
+  </IconContext.Provider>
+#+end_src
+
+<2023-08-30 Wed 19:39>: I used this as a reference for changing the 'padding' attribute:
+- https://stackoverflow.com/questions/52124938/how-to-add-padding-and-margin-to-all-material-ui-components
+
+I used this as a reference for changing the 'size' attribute for the React-Icons based icons:
+- https://stackoverflow.com/questions/43768629/how-to-scale-large-font-awesome-icons-from-the-react-icons-package
+
+<2023-08-30 Wed 20:04>: My biggest issue right now is that I can't seem to figure out why the 'MenuGrid' component has a larger width than the 'Registrees' heading, and the 'ADD NEW REGISTREE' button
 
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
