@@ -239,6 +239,32 @@ I used this as a reference for changing the 'size' attribute for the React-Icons
 
 <2023-08-30 Wed 20:04>: My biggest issue right now is that I can't seem to figure out why the 'MenuGrid' component has a larger width than the 'Registrees' heading, and the 'ADD NEW REGISTREE' button
 
+<2023-08-31 Thu 21:05>: I was able to adjust the styling of the icons and grids a bit better today.
+
+I also separated out the NavBar into its own component which is a bit more cleaner.
+
+The one thing I found was the 'Draggable' library that I used in a project a few months back, more specifically this one via these links:
+- https://www.npmjs.com/package/react-draggable#draggable-usage
+- http://react-grid-layout.github.io/react-draggable/example/
+- https://github.com/react-grid-layout/react-draggable/blob/master/example/example.js
+
+The closest example I could use is probably the 'I snap to a 50 x 50 grid' example from that demo page:
+#+begin_src typescript
+  <Draggable grid={[50, 50]} {...dragHandlers}>
+    <div className="box">I snap to a 50 x 50 grid</div>
+  </Draggable>
+#+end_src
+
+This is so that I can drag each of the registree sections via the 'MdDragIndicator' components in a grid.
+
+It would probably have to be a grid of 135 pixels or so. This might come in handy, but I just want to be able to drag and drop them within a given canvas section.
+
+I wonder if there's any other libraries that does this kind of functionality, but I'll have to do research later on.
+
+The bigger challenge I could not figure out is how to make the 'MdDragIndicator' sections to align vertically. I most likely have to mess with the overarching '<Grid item xs={2}>' component in that case with some kind of alignment property. Something that would allow me to center align the actual icon along the edge of the grid itself.
+
+Either way, it's getting there :)
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:

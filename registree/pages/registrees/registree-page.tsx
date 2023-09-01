@@ -44,9 +44,13 @@ export default function RegistreePage() {
             </Grid>
             <MenuGrid>
               <Grid item xs={2}>
-                <IconButton aria-label="Drag a Registree to a different position on screen">
-                  <MdDragIndicator />
-                </IconButton>
+                <IconContext.Provider
+                  value={{ color: "black", size: "50" }}
+                >
+                  <IconButton aria-label="Drag a Registree to a different position on screen">
+                    <MdDragIndicator />
+                  </IconButton>
+                </IconContext.Provider>
               </Grid>
               <Grid item xs={8}>
                 <h2>Mom's Christmas List</h2>
@@ -59,9 +63,13 @@ export default function RegistreePage() {
             </MenuGrid>
             <MenuGrid>
               <Grid item xs={2}>
-                <IconButton aria-label="Drag a Registree to a different position on screen">
-                  <MdDragIndicator />
-                </IconButton>
+                <IconContext.Provider
+                  value={{ color: "black", size: "50" }}
+                >
+                  <IconButton aria-label="Drag a Registree to a different position on screen">
+                    <MdDragIndicator />
+                  </IconButton>
+                </IconContext.Provider>
               </Grid>
               <Grid item xs={8}>
                 <h2>Sam's Birthday List</h2>
@@ -74,9 +82,13 @@ export default function RegistreePage() {
             </MenuGrid>
             <MenuGrid>
               <Grid item xs={2}>
-                <IconButton aria-label="Drag a Registree to a different position on screen">
-                  <MdDragIndicator />
-                </IconButton>
+                <IconContext.Provider
+                  value={{ color: "black", size: "50" }}
+                >
+                  <IconButton aria-label="Drag a Registree to a different position on screen">
+                    <MdDragIndicator />
+                  </IconButton>
+                </IconContext.Provider>
               </Grid>
               <Grid item xs={8}>
                 <h2>Tina's Wedding Registry List</h2>
@@ -88,8 +100,8 @@ export default function RegistreePage() {
               </Grid>
             </MenuGrid>
           </Grid>
-        </Box>
-      </div>
+        </Box >
+      </div >
     </>
   )
 }
