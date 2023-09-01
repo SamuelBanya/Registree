@@ -32,7 +32,7 @@ export default function RegistreePage() {
           <Grid item xs={12}>
             <h1>Registrees</h1>
           </Grid>
-          <Grid container spacing={1}>
+          <Grid container>
             <Grid
               item
               xs={12}
