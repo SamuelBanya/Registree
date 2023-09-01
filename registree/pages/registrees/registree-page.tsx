@@ -13,75 +13,14 @@ import { SiTarget } from "react-icons/si";
 import Stack from '@mui/material/Stack';
 import MenuGrid from "../../components/menu/MenuGrid";
 import { IconContext } from "react-icons/lib";
+import NavBar from '../../components/navbar/NavBar';
 
 export default function RegistreePage() {
+
   return (
     <>
       <div className="App">
-        <Grid item xs={12} className="Desktop-menu-grid">
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={50}
-            justifyContent="center"
-            padding={2.5}
-          >
-            <Grid item xs={4}>
-              <IconButton
-                sx={{
-                  width: "250px",
-                  height: "85px",
-                  backgroundColor: "#FFF",
-                  borderRadius: "15px",
-                  border: "4px solid #000",
-                }}
-                aria-label="View current user's Registrees"
-              >
-                <IconContext.Provider
-                  value={{ color: "black", size: "50" }}
-                >
-                  <FaClipboard />
-                </IconContext.Provider>
-              </IconButton>
-            </Grid>
-            <Grid item xs={4}>
-              <IconButton
-                sx={{
-                  width: "250px",
-                  height: "85px",
-                  backgroundColor: "#FFF",
-                  borderRadius: "15px",
-                  border: "4px solid #000",
-                }}
-                aria-label="Share current user's Registrees"
-              >
-                <IconContext.Provider
-                  value={{ color: "black", size: "50" }}
-                >
-                  <FaShareNodes />
-                </IconContext.Provider>
-              </IconButton>
-            </Grid>
-            <Grid item xs={4}>
-              <IconButton
-                sx={{
-                  width: "250px",
-                  height: "85px",
-                  backgroundColor: "#FFF",
-                  borderRadius: "15px",
-                  border: "4px solid #000",
-                }}
-                aria-label="View current user's profile"
-              >
-                <IconContext.Provider
-                  value={{ color: "black", size: "50" }}
-                >
-                  <FaUser />
-                </IconContext.Provider>
-              </IconButton>
-            </Grid>
-          </Stack>
-        </Grid>
+        <NavBar />
         <Box
           sx={{
             flexGrow: "1",
