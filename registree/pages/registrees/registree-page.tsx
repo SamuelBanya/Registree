@@ -43,7 +43,7 @@ export default function RegistreePage() {
               <Button fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
             </Grid>
             <MenuGrid>
-              <Grid item xs={2}>
+              <Grid item xs={2} alignItems="center" display="flex">
                 <IconContext.Provider
                   value={{ color: "black", size: "50" }}
                 >
@@ -57,12 +57,12 @@ export default function RegistreePage() {
                 <h3>Registree.xyz/mom101</h3>
                 <FaAmazon />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={2} alignItems="center" display="flex">
                 <Switch />
               </Grid>
             </MenuGrid>
             <MenuGrid>
-              <Grid item xs={2}>
+              <Grid item xs={2} alignItems="center" display="flex">
                 <IconContext.Provider
                   value={{ color: "black", size: "50" }}
                 >
@@ -76,12 +76,12 @@ export default function RegistreePage() {
                 <h3>Registree.xyz/sam123</h3>
                 <FaEbay />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={2} alignItems="center" display="flex">
                 <Switch />
               </Grid>
             </MenuGrid>
             <MenuGrid>
-              <Grid item xs={2}>
+              <Grid item xs={2} alignItems="center" display="flex">
                 <IconContext.Provider
                   value={{ color: "black", size: "50" }}
                 >
@@ -95,7 +95,7 @@ export default function RegistreePage() {
                 <h3>Registree.xyz/tina456</h3>
                 <SiTarget />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={2} alignItems="center" display="flex">
                 <Switch />
               </Grid>
             </MenuGrid>

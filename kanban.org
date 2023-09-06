@@ -265,6 +265,15 @@ The bigger challenge I could not figure out is how to make the 'MdDragIndicator'
 
 Either way, it's getting there :)
 
+<2023-09-05 Tue 21:00>: I was able to figure out how to center align the 'move' icon button and the 'switch' icon button by using these links as references:
+- The Complete Guide to Material UI Grid Align Items (https://www.youtube.com/watch?v=gz57qOkCBA4
+- https://smartdevpreneur.com/the-complete-guide-to-material-ui-grid-align-items/
+
+Basically, it just involves adding these properties to an existing 'Grid' item:
+#+begin_src js
+alignItems="center" display="flex"
+#+end_src
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
