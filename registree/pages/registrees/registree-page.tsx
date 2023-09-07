@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import Switch from '@mui/material/Switch';
 import { IconButton, useMediaQuery } from '@mui/material';
 import { MdDragIndicator } from "react-icons/md";
-import { FaAmazon, FaEbay, FaClipboard } from "react-icons/fa";
+import { FaAmazon, FaEbay, FaClipboard, FaEdit } from "react-icons/fa";
 import { FaShareNodes, FaUser } from "react-icons/fa6";
 import { SiTarget } from "react-icons/si";
 import Stack from '@mui/material/Stack';
@@ -15,6 +15,7 @@ import MenuGrid from "../../components/menu/MenuGrid";
 import { IconContext } from "react-icons/lib";
 import NavBar from '../../components/navbar/NavBar';
 import { useTheme } from '@mui/material/styles';
+
 
 export default function RegistreePage() {
 
@@ -34,7 +35,7 @@ export default function RegistreePage() {
           alignItems="center"
         >
           <Grid item xs={12}>
-            <h1 id="Registree-Header">Registrees</h1>
+            <h1 id="Registree-Header">🌲Registrees🌲</h1>
           </Grid>
           <Grid container>
             <Grid
@@ -47,7 +48,7 @@ export default function RegistreePage() {
               <Button fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
             </Grid>
             <MenuGrid>
-              <Grid item xs={2} alignItems="center" display="flex">
+              <Grid item xs={1} alignItems="center" display="flex">
                 <IconContext.Provider
                   value={{ color: "black", size: "50" }}
                 >
@@ -56,7 +57,16 @@ export default function RegistreePage() {
                   </IconButton>
                 </IconContext.Provider>
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={1} alignItems="center" display="flex">
+                <IconContext.Provider
+                  value={{ color: "black", size: "25" }}
+                >
+                  <IconButton aria-label="Edit an existing Registree">
+                    <FaEdit />
+                  </IconButton>
+                </IconContext.Provider>
+              </Grid>
+              <Grid item xs={6}>
                 <h2>Mom's Christmas List</h2>
                 <h3>Registree.xyz/mom101</h3>
                 <IconContext.Provider
@@ -70,7 +80,7 @@ export default function RegistreePage() {
               </Grid>
             </MenuGrid>
             <MenuGrid>
-              <Grid item xs={2} alignItems="center" display="flex">
+              <Grid item xs={1} alignItems="center" display="flex">
                 <IconContext.Provider
                   value={{ color: "black", size: "50" }}
                 >
@@ -79,7 +89,16 @@ export default function RegistreePage() {
                   </IconButton>
                 </IconContext.Provider>
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={1} alignItems="center" display="flex">
+                <IconContext.Provider
+                  value={{ color: "black", size: "25" }}
+                >
+                  <IconButton aria-label="Edit an existing Registree">
+                    <FaEdit />
+                  </IconButton>
+                </IconContext.Provider>
+              </Grid>
+              <Grid item xs={6}>
                 <h2>Sam's Birthday List</h2>
                 <h3>Registree.xyz/sam123</h3>
                 <IconContext.Provider
@@ -93,7 +112,7 @@ export default function RegistreePage() {
               </Grid>
             </MenuGrid>
             <MenuGrid>
-              <Grid item xs={2} alignItems="center" display="flex">
+              <Grid item xs={1} alignItems="center" display="flex">
                 <IconContext.Provider
                   value={{ color: "black", size: "50" }}
                 >
@@ -102,7 +121,16 @@ export default function RegistreePage() {
                   </IconButton>
                 </IconContext.Provider>
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={1} alignItems="center" display="flex">
+                <IconContext.Provider
+                  value={{ color: "black", size: "25" }}
+                >
+                  <IconButton aria-label="Edit an existing Registree">
+                    <FaEdit />
+                  </IconButton>
+                </IconContext.Provider>
+              </Grid>
+              <Grid item xs={6}>
                 <h2>Tina's Wedding Registry List</h2>
                 <h3>Registree.xyz/tina456</h3>
                 <IconContext.Provider
