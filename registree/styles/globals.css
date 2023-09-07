@@ -12,6 +12,15 @@
   font-size: 25px;
 }
 
+#Registree-Header {
+  color: #FFC700;
+  font-family: "Inter", sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .Desktop-menu-grid {
   height: 120px;
   background: linear-gradient(180deg, rgba(24, 212, 113, 0.50) 0%, rgba(19, 229, 121, 0.50) 100%);
@@ -23,15 +32,8 @@
   background-color: red;
 }
 
-.App {
+.Overarching-Box {
+  height: auto;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(180deg, #414141 0%, rgba(65, 65, 65, 0.00) 100%), #00FF94;
-}
-
-.App h1 {
-  color: #FFC700;
-  font-family: "Inter", sans-serif;
-  font-size: 60px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  minWidth: 'md';
 }

@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Switch from '@mui/material/Switch';
-import { IconButton } from '@mui/material';
+import { IconButton, useMediaQuery } from '@mui/material';
 import { MdDragIndicator } from "react-icons/md";
 import { FaAmazon, FaEbay, FaClipboard } from "react-icons/fa";
 import { FaShareNodes, FaUser } from "react-icons/fa6";
@@ -14,13 +14,17 @@ import Stack from '@mui/material/Stack';
 import MenuGrid from "../../components/menu/MenuGrid";
 import { IconContext } from "react-icons/lib";
 import NavBar from '../../components/navbar/NavBar';
+import { useTheme } from '@mui/material/styles';
 
 export default function RegistreePage() {
 
+  const theme = useTheme();
+  const smSizeMatch = useMediaQuery(theme.breakpoints.up('sm'));
+
   return (
     <>
-      <div className="App">
-        <NavBar />
+      <Box className="Overarching-Box">
+        {smSizeMatch ? <NavBar /> : null}
         <Box
           sx={{
             flexGrow: "1",
@@ -30,7 +34,7 @@ export default function RegistreePage() {
           alignItems="center"
         >
           <Grid item xs={12}>
-            <h1>Registrees</h1>
+            <h1 id="Registree-Header">Registrees</h1>
           </Grid>
           <Grid container>
             <Grid
@@ -55,7 +59,11 @@ export default function RegistreePage() {
               <Grid item xs={8}>
                 <h2>Mom's Christmas List</h2>
                 <h3>Registree.xyz/mom101</h3>
-                <FaAmazon />
+                <IconContext.Provider
+                  value={{ color: "black", size: "18" }}
+                >
+                  <FaAmazon />
+                </IconContext.Provider>
               </Grid>
               <Grid item xs={2} alignItems="center" display="flex">
                 <Switch />
@@ -74,7 +82,11 @@ export default function RegistreePage() {
               <Grid item xs={8}>
                 <h2>Sam's Birthday List</h2>
                 <h3>Registree.xyz/sam123</h3>
-                <FaEbay />
+                <IconContext.Provider
+                  value={{ color: "black", size: "18" }}
+                >
+                  <FaEbay />
+                </IconContext.Provider>
               </Grid>
               <Grid item xs={2} alignItems="center" display="flex">
                 <Switch />
@@ -93,7 +105,11 @@ export default function RegistreePage() {
               <Grid item xs={8}>
                 <h2>Tina's Wedding Registry List</h2>
                 <h3>Registree.xyz/tina456</h3>
-                <SiTarget />
+                <IconContext.Provider
+                  value={{ color: "black", size: "18" }}
+                >
+                  <SiTarget />
+                </IconContext.Provider>
               </Grid>
               <Grid item xs={2} alignItems="center" display="flex">
                 <Switch />
@@ -101,7 +117,8 @@ export default function RegistreePage() {
             </MenuGrid>
           </Grid>
         </Box >
-      </div >
+        {!smSizeMatch ? <NavBar /> : null}
+      </Box>
     </>
   )
 }
