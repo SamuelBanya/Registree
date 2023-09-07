@@ -280,6 +280,11 @@ Ideally, the width of the individual icon buttons themselves need to be adjusted
 
 After the page reaches mobile view, then the navbar should be displayed at the bottom (which it currently does) but the buttons would be more like squares, and less rectangular shaped.
 
+<2023-09-06 Wed 20:55>: One other thing to note:
+- To keep things on the easier end and to be more focused on the entire app experience itself, I would prefer an overlay modal window that would take up the entire screen but could be exited at any time with an 'x' button
+- This could accommodate the 'Share' button which is easily expected by most users of a modern app
+- I probably will have to create and design a profile page, but that's more for users who want to login to the app to create more secure registree lists which are otherwise public --> For any public users, I will display a disclaimer stating that I would not be held responsible for any public lists, but advocate for this usage to easily get a user quickly used to creating new registrees
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
