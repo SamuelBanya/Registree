@@ -66,7 +66,7 @@ export default function RegistreePage() {
                   </IconButton>
                 </IconContext.Provider>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <h2>Mom's Christmas List</h2>
                 <h3>Registree.xyz/mom101</h3>
                 <IconContext.Provider
@@ -98,7 +98,7 @@ export default function RegistreePage() {
                   </IconButton>
                 </IconContext.Provider>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <h2>Sam's Birthday List</h2>
                 <h3>Registree.xyz/sam123</h3>
                 <IconContext.Provider
@@ -130,7 +130,7 @@ export default function RegistreePage() {
                   </IconButton>
                 </IconContext.Provider>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <h2>Tina's Wedding Registry List</h2>
                 <h3>Registree.xyz/tina456</h3>
                 <IconContext.Provider
