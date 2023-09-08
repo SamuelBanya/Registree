@@ -326,6 +326,9 @@ I mention this because I was able to solve a width problem by using 'sx' props t
 I made a related GitHub issues page here:
 - https://github.com/react-icons/react-icons/issues/810
 
+The only thing that gets close is this:
+- https://stackoverflow.com/questions/43768629/how-to-scale-large-font-awesome-icons-from-the-react-icons-package?noredirect=1&lq=1
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
