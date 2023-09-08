@@ -11,14 +11,21 @@ export default function NavBar() {
       <Stack
         direction="row"
         alignItems="center"
-        spacing={50}
+        spacing={{ xs: 5, sm: 5, md: 5, lg: 5, xl: 5 }}
         justifyContent="center"
         padding={2.5}
       >
         <Grid item xs={4}>
           <IconButton
             sx={{
-              width: "250px",
+              width:
+              {
+                xs: 100,
+                sm: 150,
+                md: 175,
+                lg: 200,
+                xl: 225
+              },
               height: "85px",
               backgroundColor: "#FFF",
               borderRadius: "15px",
@@ -36,7 +43,14 @@ export default function NavBar() {
         <Grid item xs={4}>
           <IconButton
             sx={{
-              width: "250px",
+              width:
+              {
+                xs: 100,
+                sm: 150,
+                md: 175,
+                lg: 200,
+                xl: 225
+              },
               height: "85px",
               backgroundColor: "#FFF",
               borderRadius: "15px",
@@ -54,7 +68,14 @@ export default function NavBar() {
         <Grid item xs={4}>
           <IconButton
             sx={{
-              width: "250px",
+              width:
+              {
+                xs: 100,
+                sm: 150,
+                md: 175,
+                lg: 200,
+                xl: 225
+              },
               height: "85px",
               backgroundColor: "#FFF",
               borderRadius: "15px",
