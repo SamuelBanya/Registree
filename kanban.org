@@ -285,6 +285,47 @@ After the page reaches mobile view, then the navbar should be displayed at the b
 - This could accommodate the 'Share' button which is easily expected by most users of a modern app
 - I probably will have to create and design a profile page, but that's more for users who want to login to the app to create more secure registree lists which are otherwise public --> For any public users, I will display a disclaimer stating that I would not be held responsible for any public lists, but advocate for this usage to easily get a user quickly used to creating new registrees
 
+<2023-09-07 Thu 20:49>: Here are the references I used for the Theme override ideas for the header, as well as the increasing the spacing between the actual navbar buttons:
+- https://mui.com/system/getting-started/usage/#responsive-values
+- https://mui.com/material-ui/react-typography/
+- https://mui.com/material-ui/customization/typography/#responsive-font-sizes
+- https://stackoverflow.com/questions/48319372/changing-font-family-of-all-material-ui-components
+- https://mui.com/system/properties/#properties-reference-table
+
+<2023-09-07 Thu 21:29>: I tried researching how to scale the related icons accordingly but can't seem to find anything related to 'sx' props.
+
+I mention this because I was able to solve a width problem by using 'sx' props to adjust the width dynamically based upon the various Material UI based width of the page for a completely separate problem, which does not translate to the issue at hand since I want to do the same thing but with the IconContext.Provider instead for the 'size' attribute:
+#+begin_src typescript
+        <Grid item xs={4}>
+          <IconButton
+            sx={{
+              width:
+              {
+                xs: 100,
+                sm: 150,
+                md: 175,
+                lg: 200,
+                xl: 225
+              },
+              height: "85px",
+              backgroundColor: "#FFF",
+              borderRadius: "15px",
+              border: "4px solid #000",
+            }}
+            aria-label="View current user's Registrees"
+          >
+            <IconContext.Provider
+              value={{ color: "black", size: "50" }}
+            >
+              <FaClipboard />
+            </IconContext.Provider>
+          </IconButton>
+        </Grid>
+#+end_src
+
+I made a related GitHub issues page here:
+- https://github.com/react-icons/react-icons/issues/810
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:

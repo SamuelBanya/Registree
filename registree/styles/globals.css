@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 #Add-Registree-Button {
+  margin-top: 50px;
   border-radius: 20px;
   border: 5px solid #3AFF7D;
   background-color: #FFF;
@@ -10,15 +11,6 @@
   font-family: Inter;
   font-weight: bold;
   font-size: 25px;
-}
-
-#Registree-Header {
-  color: #FFC700;
-  font-family: "Inter", sans-serif;
-  font-size: 60px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .Desktop-menu-grid {

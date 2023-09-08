@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Switch from '@mui/material/Switch';
-import { IconButton, useMediaQuery } from '@mui/material';
+import { IconButton, Typography, useMediaQuery } from '@mui/material';
 import { MdDragIndicator } from "react-icons/md";
 import { FaAmazon, FaEbay, FaClipboard, FaEdit } from "react-icons/fa";
 import { FaShareNodes, FaUser } from "react-icons/fa6";
@@ -35,7 +35,7 @@ export default function RegistreePage() {
           alignItems="center"
         >
           <Grid item xs={12}>
-            <h1 id="Registree-Header">🌲Registrees🌲</h1>
+            <Typography variant="h1">🌲Registrees🌲</Typography>
           </Grid>
           <Grid container>
             <Grid
@@ -52,7 +52,9 @@ export default function RegistreePage() {
                 <IconContext.Provider
                   value={{ color: "black", size: "50" }}
                 >
-                  <IconButton aria-label="Drag a Registree to a different position on screen">
+                  <IconButton
+                    aria-label="Drag a Registree to a different position on screen"
+                  >
                     <MdDragIndicator />
                   </IconButton>
                 </IconContext.Provider>
