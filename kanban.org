@@ -329,6 +329,8 @@ I made a related GitHub issues page here:
 The only thing that gets close is this:
 - https://stackoverflow.com/questions/43768629/how-to-scale-large-font-awesome-icons-from-the-react-icons-package?noredirect=1&lq=1
 
+<2023-09-11 Mon 19:25>: The remaining portion that I would like to figure out is how to force the 'body' to basically begin with the entire container that's wrapped around the app itself, aka the 'Overarching-Box' section.
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
