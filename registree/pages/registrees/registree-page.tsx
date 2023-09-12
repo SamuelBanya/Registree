@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -48,29 +48,18 @@ export default function RegistreePage() {
               <Button fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
             </Grid>
             <MenuGrid>
-              <Grid item xs={1} alignItems="center" display="flex">
-                <IconContext.Provider
-                  value={{ color: "black", size: "50" }}
-                >
-                  <IconButton
-                    aria-label="Drag a Registree to a different position on screen"
+              <Grid item xs={2} alignItems="center" display="flex" pl="5px">
+                <IconButton size='small' aria-label="Edit an existing Registree">
+                  <IconContext.Provider
+                    value={{ color: "black", size: "25" }}
                   >
-                    <MdDragIndicator />
-                  </IconButton>
-                </IconContext.Provider>
-              </Grid>
-              <Grid item xs={1} alignItems="center" display="flex">
-                <IconContext.Provider
-                  value={{ color: "black", size: "25" }}
-                >
-                  <IconButton aria-label="Edit an existing Registree">
                     <FaEdit />
-                  </IconButton>
-                </IconContext.Provider>
+                  </IconContext.Provider>
+                </IconButton>
               </Grid>
               <Grid item xs={8}>
-                <h2>Mom's Christmas List</h2>
-                <h3>Registree.xyz/mom101</h3>
+                <Typography variant="h6"><b>Mom's Christmas List</b></Typography>
+                <Typography variant="h6"><Link href="#" color="black" underline="hover">Registree.xyz/mom101</Link></Typography>
                 <IconContext.Provider
                   value={{ color: "black", size: "18" }}
                 >
@@ -82,27 +71,18 @@ export default function RegistreePage() {
               </Grid>
             </MenuGrid>
             <MenuGrid>
-              <Grid item xs={1} alignItems="center" display="flex">
-                <IconContext.Provider
-                  value={{ color: "black", size: "50" }}
-                >
-                  <IconButton aria-label="Drag a Registree to a different position on screen">
-                    <MdDragIndicator />
-                  </IconButton>
-                </IconContext.Provider>
-              </Grid>
-              <Grid item xs={1} alignItems="center" display="flex">
-                <IconContext.Provider
-                  value={{ color: "black", size: "25" }}
-                >
-                  <IconButton aria-label="Edit an existing Registree">
+              <Grid item xs={2} alignItems="center" display="flex" pl="5px">
+                <IconButton size="small" aria-label="Edit an existing Registree">
+                  <IconContext.Provider
+                    value={{ color: "black", size: "25" }}
+                  >
                     <FaEdit />
-                  </IconButton>
-                </IconContext.Provider>
+                  </IconContext.Provider>
+                </IconButton>
               </Grid>
               <Grid item xs={8}>
-                <h2>Sam's Birthday List</h2>
-                <h3>Registree.xyz/sam123</h3>
+                <Typography variant="h6"><b>Sam's Birthday List</b></Typography>
+                <Typography variant="h6"><Link href="#" color="black" underline="hover">Registree.xyz/sam123</Link></Typography>
                 <IconContext.Provider
                   value={{ color: "black", size: "18" }}
                 >
@@ -114,27 +94,18 @@ export default function RegistreePage() {
               </Grid>
             </MenuGrid>
             <MenuGrid>
-              <Grid item xs={1} alignItems="center" display="flex">
-                <IconContext.Provider
-                  value={{ color: "black", size: "50" }}
-                >
-                  <IconButton aria-label="Drag a Registree to a different position on screen">
-                    <MdDragIndicator />
-                  </IconButton>
-                </IconContext.Provider>
-              </Grid>
-              <Grid item xs={1} alignItems="center" display="flex">
-                <IconContext.Provider
-                  value={{ color: "black", size: "25" }}
-                >
-                  <IconButton aria-label="Edit an existing Registree">
+              <Grid item xs={2} alignItems="center" display="flex" pl="5px">
+                <IconButton size='small' aria-label="Edit an existing Registree">
+                  <IconContext.Provider
+                    value={{ color: "black", size: "25" }}
+                  >
                     <FaEdit />
-                  </IconButton>
-                </IconContext.Provider>
+                  </IconContext.Provider>
+                </IconButton>
               </Grid>
               <Grid item xs={8}>
-                <h2>Tina's Wedding Registry List</h2>
-                <h3>Registree.xyz/tina456</h3>
+                <Typography variant="h6"><b>Tina's Wedding Registry List</b></Typography>
+                <Typography variant="h6"><Link href="#" color="black" underline="hover">Registree.xyz/tina456</Link></Typography>
                 <IconContext.Provider
                   value={{ color: "black", size: "18" }}
                 >
@@ -147,8 +118,9 @@ export default function RegistreePage() {
             </MenuGrid>
           </Grid>
         </Box >
-        {!smSizeMatch ? <NavBar /> : null}
-      </Box>
+        {!smSizeMatch ? <NavBar /> : null
+        }
+      </Box >
     </>
   )
 }
