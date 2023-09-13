@@ -2,7 +2,6 @@
 #+PRIORITIES: 1 5 3
 * Jira Tickets
 ** Todo
-*** TODO Match Figma template to React site
 *** TODO Add the 'ASP.NET' backend to the project as well
 <2023-05-19 Fri 14:01>: I plan on adding the 'ASP.NET' backend later.
 
@@ -32,18 +31,128 @@ Related guides for reference:
 
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
-** In Progress
-*** IN-PROGRESS Use 'create-react-app' to create another frontend site for this project, and enforce Typescript
-<2023-06-18 Sun 16:10>: I would like to start from scratch and just use the 'create-react-app' to create another React site, and enforce Typescript.
+*** TODO Match Figma template of front page to React site
+<2023-07-01 Sat 15:11>: I am currently in the process of basically moving the 'my-app' section that was created by 'create-react-app' to the root directory.
 
-<2023-06-18 Sun 16:14>: I found the related docs page on this topic since you can install 'create-react-app' and enforce TypeScript from the start:
-- https://create-react-app.dev/docs/adding-typescript/
+I then am going to add Material UI to match what is done at work just because its better to just skill up to match their current requirements.
 
-Related command:
+After that, I will flat out try to copy the design one for one, and make it responsive as well.
+
+<2023-07-01 Sat 15:14>: I installed MaterialUI via this command:
 #+begin_src bash
-yarn create react-app my-app --template typescript
+sam@notestation ~/hub/Registree/client $ npm install @mui/material @emotion/react @emotion/styled
 #+end_src
 
+I then installed the related 'Roboto' font as requested by MaterialUI:
+#+begin_src bash
+sam@notestation ~/hub/Registree/client $ npm install @fontsource/roboto
+#+end_src
+
+I then added the 'Roboto' font to the 'entry point' of the application which is 'src/index.tsx':
+#+begin_src js
+// Adding MaterialUI's 'roboto' font:
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+#+end_src
+
+I then added the 'font Icon component' with the following command:
+#+begin_src bash
+sam@notestation ~/hub/Registree/client $ npm install @mui/icons-material
+#+end_src
+
+I also utilized the Material UI example to just add a button on the main page:
+- https://mui.com/material-ui/getting-started/usage/
+
+<2023-07-01 Sat 16:24>: Since the re-organization took a bit of effort, I think for next time, my goal is to:
+- Create a separate 'Registree' component in the 'client/src/components' directory
+- I will then try to make it match the Figma template using 'Grid' components from Material UI:
+- https://mui.com/material-ui/react-grid/
+
+<2023-07-22 Sat 23:07>: I am in the process of adding changes to this particular branch of the project:
+- https://github.com/SamuelBanya/Registree/tree/Make-Homepage-Model-Figma
+
+After my changes are done, I will then merge this branch into main.
+
+I had to lean on these docs pages to get icons from 'react-icons' into the project, as well as how to use 'IconButtons' from Material UI directly:
+- https://react-icons.github.io/react-icons
+- https://mui.com/material-ui/react-button/
+
+I also incorporated the 'Switch' button for the 'toggle' style button as well from Material UI:
+- https://mui.com/material-ui/react-switch/
+
+So far, I kind of have the spacing right, but the CSS needs to be flush to the left and right for each section. This will require some more research on Material UI directly.
+
+<2023-07-29 Sat 11:21>: I tried to hone in more on the Figma design itself this morning, and made a few revisions.
+
+I found the 'Inter' font used by Figma here:
+- https://fonts.google.com/specimen/Inter?preview.text=asdf&preview.text_type=custom
+
+I then found this related StackOverflow post on the topic of importing Google fonts into a React project here:
+- https://stackoverflow.com/questions/40769551/how-to-use-google-fonts-in-react-js
+
+I then modified the related 'App.css' file to include:
+#+begin_src css
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+#+end_src
+
+I then adjusted the 'Add Registree Button' button's CSS:
+#+begin_src css
+#Add-Registree-Button {
+  border-radius: 20px;
+  border: 5px solid #3AFF7D;
+  background-color: #FFF;
+  /* color: black; */
+  /* font-weight: 700; */
+  font-family: "Inter", sans-serif;
+
+  color: #000;
+  font-family: Inter;
+  /* font-size: 50px; */
+  font-style: bold;
+  /* font-weight: 700; */
+}
+#+end_src
+
+I solved the issue of the entire 'Add Registree Button' button not being the entire width of the screen by adding the 'fullWidth' to the button itself:
+#+begin_src html
+          <Grid item xs={12}>
+            <Button fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
+          </Grid>
+#+end_src
+
+Related Material UI docs page on 'fullWidth' boolean variable:
+- https://mui.com/toolpad/reference/components/button/#properties
+
+I then solved the issue with the 'Item' blocks containing white background colors by removing all 'Item' tags from the Grids, and then added an overarching gradient for the '.App':
+#+begin_src css
+.App {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(180deg, #414141 0%, rgba(65, 65, 65, 0.00) 100%), #00FF94;
+}
+#+end_src
+
+I then found out about the 'Stack' component that can be used to align elements in a row via this page example here:
+- https://mui.com/material-ui/react-button/
+
+Here is the more specific 'Stack' component docs page:
+- https://mui.com/material-ui/react-stack/
+
+I then applied individual Icon Button changes via the 'sx' prop here:
+- https://mui.com/material-ui/api/icon-button/
+
+My goal is once it actually all works, I will probably just create my own version of the 'Icon Button' component so that I don't have to specify the 'sx' props in the open like the current version of the project.
+
+<2023-07-29 Sat 11:38>: After looking in the related MaterialUI docs, I found the 'justifyContent' boolean variable so that I can align the icon buttons in a row:
+- https://mui.com/material-ui/react-stack/
+
+<2023-07-29 Sat 13:33>: I also had to separate the 'MenuGrid' into its own component since it has some specific styling that just would clutter up the main page.
+
+I realized I had to use 'ReactNode' in order for me to allow any children to be rendered between the 'MenuGrid' I created.
+
+I used this page as a reference:
+- https://www.sharooq.com/solved-type-children-element-has-no-properties-in-common-with-type-intrinsicattributes-react
+** In Progress
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
@@ -380,6 +489,219 @@ I verified the Yarn installation with the output of this command:
 sam@notestation ~/hub/Registree/client $ yarn --version
 1.22.19
 #+end_src
+*** DONE Use 'create-react-app' to create another frontend site for this project, and enforce Typescript
+<2023-06-18 Sun 16:10>: I would like to start from scratch and just use the 'create-react-app' to create another React site, and enforce Typescript.
+
+<2023-06-18 Sun 16:14>: I found the related docs page on this topic since you can install 'create-react-app' and enforce TypeScript from the start:
+- https://create-react-app.dev/docs/adding-typescript/
+
+Related command:
+#+begin_src bash
+yarn create react-app my-app --template typescript
+#+end_src
+
+<2023-07-01 Sat 15:10>: I did this already during the last time I worked on this project so this task is complete.
+*** DONE Convert application to 'NextJS' app, and adjust styling to match Figma template
+<2023-08-20 Sun 10:41>: I realized after a bit of thinking that it would kind of pointless to use 'create-react-app' as the scaffolding for this app since Facebook (Meta) doesn't even support it anyway and pretty much abandoned it.
+
+That being noted, I might as well use NextJS anyway.
+
+With this in mind, I followed this guide:
+- https://nextjs.org/learn/basics/create-nextjs-app/setup
+
+Related command I used:
+#+begin_src bash
+npx create-next-app@latest registree --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
+#+end_src
+
+<2023-08-20 Sun 11:21>: On a side note, I also forced Typescript by literally renaming every new page to be a '.tsx' file as per this NextJS guide page that tells you that NextJS handles the rest:
+- https://nextjs.org/docs/pages/building-your-application/configuring/typescript
+
+<2023-08-20 Sun 11:49>: I also used these commands to install MaterialUI and its associated custom 'roboto' font as per my other 'Match Figma template of front page to React site' task's notes:
+#+begin_src bash
+sam@notestation ~/hub/Registree/registree $ npm install @mui/material @emotion/react @emotion/styled
+
+sam@notestation ~/hub/Registree/registree $ npm install @fontsource/roboto
+
+sam@notestation ~/hub/Registree/registree $ npm install @mui/icons-material
+
+sam@notestation ~/hub/Registree/registree $ npm install react-icons
+#+end_src
+
+I then added the font references to the 'index.tsx' page in the project:
+#+begin_src typescript
+// Adding MaterialUI's 'roboto' font:
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+#+end_src
+
+<2023-08-20 Sun 12:06>: The next thing I have to do is to actually make the CSS match, so it will take some reading more into the actual guide itself, as well as some styling docs from NextJS so I can make sure that the overarching 'globals.css' stylesheet is actually included in the project as well:
+- https://nextjs.org/learn/basics/navigate-between-pages/link-component
+
+NOTE:
+- I can also look at the previous code as well just in case I am missing a few stylesheet references too:
+- https://github.com/SamuelBanya/Registree/tree/6027cd78760bf85c384902d53d38095992111284
+
+Also, here are some references I might need to use to add a 'Head' component from NextJS to potentially allow for custom fonts:
+- https://www.reddit.com/r/nextjs/comments/pfut94/how_to_load_custom_fonts_in_nextjs/
+- https://blog.logrocket.com/next-js-font-optimization-custom-google-fonts/
+- https://medium.com/frontendweb/how-to-add-font-in-next-js-7a7fba80d528
+
+<2023-08-29 Tue 21:03>: Here's how to actually access the latest page:
+- http://localhost:3000/registrees/registree-page
+
+<2023-08-29 Tue 21:20>: Here's how I figured out how to actually add the appropriate global styling that I wanted to utilize, aka I followed this tutorial guide on the NextJS docs page:
+- https://nextjs.org/learn/basics/assets-metadata-css/global-styles
+
+I then added the 'pages/_app.js' which acts as more of the overarching file that dictates CSS styling:
+#+begin_src typescript
+  import '../styles/global.css';
+
+  export default function App({ Component, pageProps }) {
+    return <Component {...pageProps} />;
+  }
+#+end_src
+
+I then saved it, and that pretty much allowed the global styling to be utilized as intended.
+
+<2023-08-30 Wed 19:27>: I figured out how to force the related icons from 'React Icons' to be black, aka you have to wrap a context provider around each icon:
+- https://github.com/react-icons/react-icons#readme
+- https://stackoverflow.com/questions/56636280/how-to-style-react-icons
+
+With this in mind, I pretty much did the following as an example in which I changed the 'FaUser' icon to have a black color as opposed to the ugly default grey color:
+#+begin_src typescript
+  <IconContext.Provider
+    value={{ color: "black" }}
+  >
+    <FaUser />
+  </IconContext.Provider>
+#+end_src
+
+<2023-08-30 Wed 19:39>: I used this as a reference for changing the 'padding' attribute:
+- https://stackoverflow.com/questions/52124938/how-to-add-padding-and-margin-to-all-material-ui-components
+
+I used this as a reference for changing the 'size' attribute for the React-Icons based icons:
+- https://stackoverflow.com/questions/43768629/how-to-scale-large-font-awesome-icons-from-the-react-icons-package
+
+<2023-08-30 Wed 20:04>: My biggest issue right now is that I can't seem to figure out why the 'MenuGrid' component has a larger width than the 'Registrees' heading, and the 'ADD NEW REGISTREE' button
+
+<2023-08-31 Thu 21:05>: I was able to adjust the styling of the icons and grids a bit better today.
+
+I also separated out the NavBar into its own component which is a bit more cleaner.
+
+The one thing I found was the 'Draggable' library that I used in a project a few months back, more specifically this one via these links:
+- https://www.npmjs.com/package/react-draggable#draggable-usage
+- http://react-grid-layout.github.io/react-draggable/example/
+- https://github.com/react-grid-layout/react-draggable/blob/master/example/example.js
+
+The closest example I could use is probably the 'I snap to a 50 x 50 grid' example from that demo page:
+#+begin_src typescript
+  <Draggable grid={[50, 50]} {...dragHandlers}>
+    <div className="box">I snap to a 50 x 50 grid</div>
+  </Draggable>
+#+end_src
+
+This is so that I can drag each of the registree sections via the 'MdDragIndicator' components in a grid.
+
+It would probably have to be a grid of 135 pixels or so. This might come in handy, but I just want to be able to drag and drop them within a given canvas section.
+
+I wonder if there's any other libraries that does this kind of functionality, but I'll have to do research later on.
+
+The bigger challenge I could not figure out is how to make the 'MdDragIndicator' sections to align vertically. I most likely have to mess with the overarching '<Grid item xs={2}>' component in that case with some kind of alignment property. Something that would allow me to center align the actual icon along the edge of the grid itself.
+
+Either way, it's getting there :)
+
+<2023-09-05 Tue 21:00>: I was able to figure out how to center align the 'move' icon button and the 'switch' icon button by using these links as references:
+- The Complete Guide to Material UI Grid Align Items (https://www.youtube.com/watch?v=gz57qOkCBA4
+- https://smartdevpreneur.com/the-complete-guide-to-material-ui-grid-align-items/
+
+Basically, it just involves adding these properties to an existing 'Grid' item:
+#+begin_src js
+alignItems="center" display="flex"
+#+end_src
+
+<2023-09-06 Wed 20:52>: I made pretty good headway today, but the main thing I would need to do is to adjust the navbar so that the components in the 'Stack' shift dynamically as the page gets slowly less wide.
+
+Ideally, the width of the individual icon buttons themselves need to be adjusted in a calculated percentage as the page gets slowly thinner to mobile size.
+
+After the page reaches mobile view, then the navbar should be displayed at the bottom (which it currently does) but the buttons would be more like squares, and less rectangular shaped.
+
+<2023-09-06 Wed 20:55>: One other thing to note:
+- To keep things on the easier end and to be more focused on the entire app experience itself, I would prefer an overlay modal window that would take up the entire screen but could be exited at any time with an 'x' button
+- This could accommodate the 'Share' button which is easily expected by most users of a modern app
+- I probably will have to create and design a profile page, but that's more for users who want to login to the app to create more secure registree lists which are otherwise public --> For any public users, I will display a disclaimer stating that I would not be held responsible for any public lists, but advocate for this usage to easily get a user quickly used to creating new registrees
+
+<2023-09-07 Thu 20:49>: Here are the references I used for the Theme override ideas for the header, as well as the increasing the spacing between the actual navbar buttons:
+- https://mui.com/system/getting-started/usage/#responsive-values
+- https://mui.com/material-ui/react-typography/
+- https://mui.com/material-ui/customization/typography/#responsive-font-sizes
+- https://stackoverflow.com/questions/48319372/changing-font-family-of-all-material-ui-components
+- https://mui.com/system/properties/#properties-reference-table
+
+<2023-09-07 Thu 21:29>: I tried researching how to scale the related icons accordingly but can't seem to find anything related to 'sx' props.
+
+I mention this because I was able to solve a width problem by using 'sx' props to adjust the width dynamically based upon the various Material UI based width of the page for a completely separate problem, which does not translate to the issue at hand since I want to do the same thing but with the IconContext.Provider instead for the 'size' attribute:
+#+begin_src typescript
+        <Grid item xs={4}>
+          <IconButton
+            sx={{
+              width:
+              {
+                xs: 100,
+                sm: 150,
+                md: 175,
+                lg: 200,
+                xl: 225
+              },
+              height: "85px",
+              backgroundColor: "#FFF",
+              borderRadius: "15px",
+              border: "4px solid #000",
+            }}
+            aria-label="View current user's Registrees"
+          >
+            <IconContext.Provider
+              value={{ color: "black", size: "50" }}
+            >
+              <FaClipboard />
+            </IconContext.Provider>
+          </IconButton>
+        </Grid>
+#+end_src
+
+I made a related GitHub issues page here:
+- https://github.com/react-icons/react-icons/issues/810
+
+The only thing that gets close is this:
+- https://stackoverflow.com/questions/43768629/how-to-scale-large-font-awesome-icons-from-the-react-icons-package?noredirect=1&lq=1
+
+<2023-09-11 Mon 19:25>: The remaining portion that I would like to figure out is how to force the 'body' to basically begin with the entire container that's wrapped around the app itself, aka the 'Overarching-Box' section.
+
+<2023-09-12 Tue 19:47>: I changed the '.Overarching-Box' CSS so that it had the following properties to use 'overflow' and 'overflowY' respectively, and also adjusted the main 'body' tag itself to have no margin since it was causing a weird margin boxed in effect:
+#+begin_src css
+.Overarching-Box {
+  height: 100vh;
+  overflow: auto;
+  overflowY: 'scroll';
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(180deg, #414141 0%, rgba(65, 65, 65, 0.00) 100%), #00FF94;
+  minWidth: 'md';
+  flexDirection: 'column';
+  display: 'flex';
+}
+
+body {
+  background-color: black;
+  margin: 0;
+}
+#+end_src
+
+I used this link as a reference:
+- https://aguidehub.com/blog/2023-03-17-how-to-make-mui-table-with-body-scrollable-in-react-js/
+
+<2023-09-12 Tue 20:08>: This task is done, so I will merge the associated branch to main on GitHub itself.
+
 ** TASKS THAT ARE CANCELLED
 *** CANCELLED Match Figma template to actual React Native App for 'List' page
 <2023-06-10 Sat 10:33>: The current goal is to get the 'List' page to match my Figma template.
