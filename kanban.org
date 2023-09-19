@@ -32,41 +32,6 @@ Related guides for reference:
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
 ** In Progress
-*** Create Figma template for overlay menus for 'Registry Wizard Menu' components for Desktop and Mobile
-<2023-09-14 Thu 18:52>: I am doing related research online for the related wizard menus required for the 'Add New Registree' button.
-
-Basically, I want the user to be able to enter the following information:
-
-First wizard menu screen:
-- Registree Name:
-- Source: (Amazon, Target, eBay, Walmart)
-
-Each registry list should contain the following items:
-- "+" Add Button: This allows you to add another item to the list, and should be easily accessible
-- Item Name:
-- Link:
-- Price:
-
-<2023-09-14 Thu 19:54>: I utilized this project for the use of the downard facing Chevron icon:
-- https://www.figma.com/community/file/1072278169477341754
-
-In terms of progression, I have currently finished the first part of the
-
-Also, note, I used this lady's wizard form for ideas as well:
-- https://dribbble.com/shots/4403797-Wizard-UI-Design
-
-This one looks great for the profile page itself:
-- https://dribbble.com/shots/16803974-Form-Elements-V1
-
-This looks like a good reference for a form requiring the user to enter dates and other similar info:
-- https://dribbble.com/shots/3805056-Wizard-Form-Concept
-
-This seems like a good idea for a wireframe workflow:
-- https://dribbble.com/shots/6542601-App-s-Wireframe-Userflow-for-Fast-KYC
-
-I love the simplicity and readibility of this form example:
-- https://dribbble.com/shots/2938610-Material-Bootstrap-Wizard-Book-Room
-
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
@@ -737,6 +702,52 @@ I realized I had to use 'ReactNode' in order for me to allow any children to be 
 
 I used this page as a reference:
 - https://www.sharooq.com/solved-type-children-element-has-no-properties-in-common-with-type-intrinsicattributes-react
+*** DONE Create Figma template for overlay menus for 'Registry Wizard Menu' components for Desktop and Mobile
+<2023-09-14 Thu 18:52>: I am doing related research online for the related wizard menus required for the 'Add New Registree' button.
+
+Basically, I want the user to be able to enter the following information:
+
+First wizard menu screen:
+- Registree Name:
+- Source: (Amazon, Target, eBay, Walmart)
+
+Each registry list should contain the following items:
+- "+" Add Button: This allows you to add another item to the list, and should be easily accessible
+- Item Name:
+- Link:
+- Price:
+
+<2023-09-14 Thu 19:54>: I utilized this project for the use of the downard facing Chevron icon:
+- https://www.figma.com/community/file/1072278169477341754
+
+In terms of progression, I have currently finished the first part of the
+
+Also, note, I used this lady's wizard form for ideas as well:
+- https://dribbble.com/shots/4403797-Wizard-UI-Design
+
+This one looks great for the profile page itself:
+- https://dribbble.com/shots/16803974-Form-Elements-V1
+
+This looks like a good reference for a form requiring the user to enter dates and other similar info:
+- https://dribbble.com/shots/3805056-Wizard-Form-Concept
+
+This seems like a good idea for a wireframe workflow:
+- https://dribbble.com/shots/6542601-App-s-Wireframe-Userflow-for-Fast-KYC
+
+I love the simplicity and readibility of this form example:
+- https://dribbble.com/shots/2938610-Material-Bootstrap-Wizard-Book-Room
+
+<2023-09-18 Mon 18:59>: I have completed the related Figma for this task.
+
+I will now move onto creating a new branch that will contain the components for the registry wizard menu.
+
+Most likely, I will have to achieve this look by doing the following:
+- The entire thing should be wrapped in a flex box from Material UI --> This should be 15 to 25% of the top of the screen
+- I can probably just use some kind of preset shapes for the circle items, as well as a line shape item
+- The top green banner portion should either be a flex box, or grid
+- The lower portion should be a form, ideally a 'Formik' based form, since I've used that package through work anyway
+- The 'Next Step' button itself should just be a basic button as well from Material UI with custom styling.
+
 ** TASKS THAT ARE CANCELLED
 *** CANCELLED Match Figma template to actual React Native App for 'List' page
 <2023-06-10 Sat 10:33>: The current goal is to get the 'List' page to match my Figma template.
