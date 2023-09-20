@@ -15,12 +15,27 @@ import MenuGrid from "../../components/menu/MenuGrid";
 import { IconContext } from "react-icons/lib";
 import NavBar from '../../components/navbar/NavBar';
 import { useTheme } from '@mui/material/styles';
-
+import { useState } from "react";
+import RegistryWizard from "../../components/overlay/RegistryWizard";
 
 export default function RegistreePage() {
-
+  // Theme specific overrides:
   const theme = useTheme();
   const smSizeMatch = useMediaQuery(theme.breakpoints.up('sm'));
+
+  // Click handlers for 'RegistryWizard' dialog menu:
+  const emails = ['username@gmail.com', 'user02@gmail.com'];
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(emails[1]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  }
+
+  const handleClose = (value: string) => {
+    setOpen(false);
+    setSelectedValue(value);
+  }
 
   return (
     <>
@@ -45,7 +60,8 @@ export default function RegistreePage() {
                 marginBottom: "50px"
               }}
             >
-              <Button fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
+              <Button onClick={handleClickOpen} fullWidth id="Add-Registree-Button" variant="contained">Add New Registree</Button>
+              <RegistryWizard selectedValue={selectedValue} open={open} onClose={handleClose} />
             </Grid>
             <MenuGrid>
               <Grid item xs={2} alignItems="center" display="flex" pl="5px">
