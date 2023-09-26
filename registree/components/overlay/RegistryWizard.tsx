@@ -104,7 +104,6 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
               <div style={{ marginBottom: '10px' }}>
                 <label style={{ fontWeight: 'bold' }} htmlFor="source">Source</label>
                 <FormControl fullWidth>
-                  <InputLabel id="source-select-label">Source</InputLabel>
                   <Select
                     labelId="source-select-label"
                     id="source-select"
