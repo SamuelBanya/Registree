@@ -5,6 +5,10 @@ import { useFormik } from 'formik';
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import { useTheme } from '@mui/material/styles';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 export interface RegistryDialogProps {
   open: boolean;
@@ -36,7 +40,16 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
     borderRadius: '15px',
     height: isMobileView ? '42px' : '82px',
     marginTop: '20px',
-    textIndent: '20px'
+    textIndent: '20px',
+    border: '2px solid black'
+  }
+  const selectStyle = {
+    width: '100%',
+    borderRadius: '15px',
+    height: isMobileView ? '42px' : '82px',
+    marginTop: '20px',
+    textIndent: '8px',
+    border: '2px solid black'
   }
 
   return (
@@ -45,8 +58,8 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
         <Box style={{ background: '#3AFF7D', minHeight: '20%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'auto' }}>
           <Avatar
             sx={{
-              width: 60,
-              height: 60,
+              width: 50,
+              height: 50,
               backgroundColor: "#000000",
               color: "#ffffff",
               marginRight: '20px',
@@ -58,8 +71,8 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
           <Divider sx={{ borderColor: "#000000", borderWidth: '2px 0 0', width: '20%', height: '2px', margin: '30px 0' }} />
           <Avatar
             sx={{
-              width: 60,
-              height: 60,
+              width: 50,
+              height: 50,
               backgroundColor: "#ffffff",
               color: "#000000",
               marginLeft: '20px',
@@ -90,16 +103,24 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
               </div>
               <div style={{ marginBottom: '10px' }}>
                 <label style={{ fontWeight: 'bold' }} htmlFor="source">Source</label>
-                <input
-                  type="text"
-                  id="source"
-                  name="source"
-                  placeholder="Ex: Amazon"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.source}
-                  style={{ ...inputStyle }}
-                />
+                <FormControl fullWidth>
+                  <InputLabel id="source-select-label">Source</InputLabel>
+                  <Select
+                    labelId="source-select-label"
+                    id="source-select"
+                    value={formik.values.source}
+                    label="Source"
+                    onChange={(event) => {
+                      formik.setFieldValue('source', event.target.value)
+                    }}
+                    style={{ ...selectStyle }}
+                  >
+                    <MenuItem value="Amazon">Amazon</MenuItem>
+                    <MenuItem value="Target">Target</MenuItem>
+                    <MenuItem value="Walmart">Walmart</MenuItem>
+                    <MenuItem value="eBay">eBay</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <button
