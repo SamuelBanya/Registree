@@ -4,6 +4,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
+import { useTheme } from '@mui/material/styles';
 
 export interface RegistryDialogProps {
   open: boolean;
@@ -26,6 +27,17 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
       console.log(values);
     },
   });
+
+  // Adding mobile specific changes for style changes based on mobile view:
+  const theme = useTheme();
+  const isMobileView = theme.breakpoints.down('sm');
+  const inputStyle = {
+    width: '100%',
+    borderRadius: '15px',
+    height: isMobileView ? '42px' : '82px',
+    marginTop: '20px',
+    textIndent: '20px'
+  }
 
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="lg" fullWidth>
@@ -64,7 +76,7 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
                 Registree Info
               </h1>
               <div style={{ marginBottom: '10px' }}>
-                <label htmlFor="registreeName">Registree Name</label>
+                <label style={{ fontWeight: 'bold' }} htmlFor="registreeName">Registree Name</label>
                 <input
                   type="text"
                   id="registreeName"
@@ -73,11 +85,11 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.registreeName}
-                  style={{ width: '100%' }}
+                  style={{ ...inputStyle }}
                 />
               </div>
               <div style={{ marginBottom: '10px' }}>
-                <label htmlFor="source">Source</label>
+                <label style={{ fontWeight: 'bold' }} htmlFor="source">Source</label>
                 <input
                   type="text"
                   id="source"
@@ -86,7 +98,7 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.source}
-                  style={{ width: '100%' }}
+                  style={{ ...inputStyle }}
                 />
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
