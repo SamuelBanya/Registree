@@ -42,6 +42,8 @@ There is weird blue styling that's present by default.
 
 Afterwards, I will have to figure out how I will handle handing state between two screens of a given 'Formik' based form.
 
+<2023-09-25 Mon 22:03>: I am still not sure how to remove the default blue outline from the 'Select' tag.
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:

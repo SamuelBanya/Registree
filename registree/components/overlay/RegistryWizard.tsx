@@ -41,7 +41,8 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
     height: isMobileView ? '42px' : '82px',
     marginTop: '20px',
     textIndent: '20px',
-    border: '2px solid black'
+    border: '2px solid black',
+    outline: 'none'
   }
   const selectStyle = {
     width: '100%',
@@ -49,7 +50,13 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
     height: isMobileView ? '42px' : '82px',
     marginTop: '20px',
     textIndent: '8px',
-    border: '2px solid black'
+    border: '2px solid black',
+    '& .MuiSelect-icon': {
+      color: 'black'
+    },
+    '& .MuiSelect-root:focus': {
+      outline: 'none'
+    },
   }
 
   return (
