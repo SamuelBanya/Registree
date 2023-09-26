@@ -58,10 +58,10 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
           </Avatar>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-          <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
-            Registree Info
-          </h1>
-          <form onSubmit={formik.handleSubmit} style={{ width: '100%', maxWidth: '400px', margin: '0 auto' }}>
+          <form onSubmit={formik.handleSubmit} style={{ width: '100%', maxWidth: '40%', margin: '0 auto', maxHeight: '20%' }}>
+            <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
+              Registree Info
+            </h1>
             <div style={{ marginBottom: '10px' }}>
               <label htmlFor="registreeName">Registree Name</label>
               <input
