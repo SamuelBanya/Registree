@@ -29,8 +29,8 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
 
   return (
     <Dialog onClose={handleClose} open={open} maxWidth="lg" fullWidth>
-      <Box p={{ xs: 2, sm: 2, md: 0 }} height="100vh" width="100%" display="flex" flexDirection="column" justifyContent="center" position="relative">
-        <div style={{ background: '#3AFF7D', height: '5%', width: '100%', position: 'absolute', top: 0, left: 0, right: 0, paddingTop: '10%', paddingBottom: '10%', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '5%' }}>
+      <Box style={{ height: '100vh' }}>
+        <Box style={{ background: '#3AFF7D', height: '5%', width: '100%', position: 'absolute', top: 0, left: 0, right: 0, paddingTop: '10%', paddingBottom: '10%', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '5%', overflow: 'auto' }}>
           <Avatar
             sx={{
               width: 60,
@@ -56,9 +56,9 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
           >
             2
           </Avatar>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-          <form onSubmit={formik.handleSubmit} style={{ width: '100%', maxWidth: '40%', margin: '0 auto', maxHeight: '20%' }}>
+        </Box>
+        <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+          <form onSubmit={formik.handleSubmit} style={{ width: '100%', maxWidth: '40%', margin: '0 auto' }}>
             <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
               Registree Info
             </h1>
@@ -75,7 +75,6 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
                 style={{ width: '100%' }}
               />
             </div>
-
             <div style={{ marginBottom: '10px' }}>
               <label htmlFor="source">Source</label>
               <input
@@ -89,7 +88,6 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
                 style={{ width: '100%' }}
               />
             </div>
-
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <button
                 type="submit"
@@ -106,9 +104,9 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
               </button>
             </div>
           </form>
-        </div>
+        </Box>
       </Box>
-    </Dialog>
+    </Dialog >
   );
 }
 
