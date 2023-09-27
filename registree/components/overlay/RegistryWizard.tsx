@@ -1,14 +1,12 @@
 import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import { useTheme } from '@mui/material/styles';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import Step1Form from './Step1Form';
+import Step2Form from './Step2Form';
 
 export interface RegistryDialogProps {
   open: boolean;
@@ -17,9 +15,18 @@ export interface RegistryDialogProps {
 }
 
 const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, onClose }) => {
-
   const handleClose = () => {
     onClose(selectedValue);
+  }
+
+  const [currentStep, setCurrentStep] = useState(1);
+
+  const handleNextStep = () => {
+    setCurrentStep(currentStep + 1);
+  }
+
+  const handlePreviousStep = () => {
+    setCurrentStep(currentStep - 1);
   }
 
   const formik = useFormik({
@@ -85,59 +92,8 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
         </Box>
         <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '80%', width: '100%' }}>
           <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', top: '15%', width: '100%' }}>
-            <form onSubmit={formik.handleSubmit} style={{ width: '80%', margin: '0 auto' }}>
-              <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
-                Registree Info
-              </h1>
-              <div style={{ marginBottom: '10px' }}>
-                <label style={{ fontWeight: 'bold' }} htmlFor="registreeName">Registree Name</label>
-                <input
-                  type="text"
-                  id="registreeName"
-                  name="registreeName"
-                  placeholder="Ex: Anniversary List"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.registreeName}
-                  style={{ ...inputStyle }}
-                />
-              </div>
-              <div style={{ marginBottom: '10px' }}>
-                <label style={{ fontWeight: 'bold' }} htmlFor="source">Source</label>
-                <FormControl fullWidth>
-                  <Select
-                    id="source-select"
-                    value={formik.values.source}
-                    label="Source"
-                    onChange={(event) => {
-                      formik.setFieldValue('source', event.target.value)
-                    }}
-                    style={{ ...selectStyle }}
-                  >
-                    <MenuItem value="Amazon">Amazon</MenuItem>
-                    <MenuItem value="Target">Target</MenuItem>
-                    <MenuItem value="Walmart">Walmart</MenuItem>
-                    <MenuItem value="eBay">eBay</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <button
-                  type="submit"
-                  style={{
-                    width: '100px',
-                    height: '50px',
-                    backgroundColor: '#000000',
-                    color: '#FFC700',
-                    borderRadius: '30px',
-                    fontWeight: 'bold',
-                    marginTop: '25px'
-                  }}
-                >
-                  Next Step
-                </button>
-              </div>
-            </form>
+            {currentStep === 1 && <Step1Form formik={formik} onNext={handleNextStep} />}
+            {currentStep === 2 && <Step2Form formik={formik} onNext={handleNextStep} />}
           </Box>
         </Box>
       </Box>
