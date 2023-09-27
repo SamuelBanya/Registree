@@ -51,7 +51,6 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
     marginTop: '20px',
     textIndent: '8px',
     border: '2px solid black',
-    boxShadow: '0 0 0 0 rgba(0, 0, 0, 0) !important',
   }
 
   return (
