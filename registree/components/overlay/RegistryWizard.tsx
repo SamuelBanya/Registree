@@ -51,12 +51,7 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
     marginTop: '20px',
     textIndent: '8px',
     border: '2px solid black',
-    '& .MuiSelect-icon': {
-      color: 'black'
-    },
-    '& .MuiSelect-root:focus': {
-      outline: 'none'
-    },
+    boxShadow: '0 0 0 0 rgba(0, 0, 0, 0) !important',
   }
 
   return (
@@ -112,7 +107,6 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
                 <label style={{ fontWeight: 'bold' }} htmlFor="source">Source</label>
                 <FormControl fullWidth>
                   <Select
-                    labelId="source-select-label"
                     id="source-select"
                     value={formik.values.source}
                     label="Source"
