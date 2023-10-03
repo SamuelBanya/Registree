@@ -70,8 +70,9 @@ const Step1Form: React.FC<StepProps> = ({ formik, onNext }) => {
         </FormControl>
       </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <button
-          type="submit"
+      <button
+    type="button"
+    onClick={onNext}
           style={{
             width: '100px',
             height: '50px',

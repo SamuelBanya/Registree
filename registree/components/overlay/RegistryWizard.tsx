@@ -22,10 +22,16 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
   const [currentStep, setCurrentStep] = useState(1);
 
   const handleNextStep = () => {
+    console.log("handleNextStep called");
+    console.log("currentStep: " + JSON.stringify(currentStep));
+
     setCurrentStep(currentStep + 1);
   }
 
   const handlePreviousStep = () => {
+    console.log("handlePreviousStep called");
+    console.log("currentStep: " + JSON.stringify(currentStep));
+
     setCurrentStep(currentStep - 1);
   }
 
@@ -35,7 +41,8 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({ open, selectedValue, on
       source: '',
     },
     onSubmit: (values) => {
-      console.log(values);
+      console.log("onSubmit function called");
+      console.log("values: ", JSON.stringify(values));
     },
   });
 
