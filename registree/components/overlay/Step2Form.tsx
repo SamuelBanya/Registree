@@ -4,14 +4,14 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import React from 'react';
 
 interface StepProps {
   formik: ReturnType<typeof useFormik>;
-  onNext: () => void;
+  onPrevious: () => void;
 }
 
-const Step2Form: React.FC<StepProps> = ({ formik, onNext }) => {
-  // Adding mobile specific changes for style changes based on mobile view:
+const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
   const theme = useTheme();
   const isMobileView = theme.breakpoints.down('sm');
   const inputStyle = {
@@ -21,8 +21,8 @@ const Step2Form: React.FC<StepProps> = ({ formik, onNext }) => {
     marginTop: '20px',
     textIndent: '20px',
     border: '2px solid black',
-    outline: 'none'
-  }
+    outline: 'none',
+  };
   const selectStyle = {
     width: '100%',
     borderRadius: '15px',
@@ -30,46 +30,75 @@ const Step2Form: React.FC<StepProps> = ({ formik, onNext }) => {
     marginTop: '20px',
     textIndent: '8px',
     border: '2px solid black',
-  }
+  };
 
   return (
-    <form onSubmit={formik.handleSubmit} style={{ width: '80%', margin: '0 auto' }}>
+    <form
+      onSubmit={formik.handleSubmit}
+      style={{ width: '80%', margin: '0 auto' }}>
       <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
         Registree Info
       </h1>
       <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="registreeName">Registree Name</label>
+        <label style={{ fontWeight: 'bold' }} htmlFor="itemName">
+          Item Name
+        </label>
         <input
           type="text"
-          id="registreeName"
-          name="registreeName"
-          placeholder="Ex: Anniversary List"
+          id="itemName"
+          name="itemName"
+          placeholder="Ex: Anniversary Gift"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.registreeName}
+          value={formik.values.itemName}
           style={{ ...inputStyle }}
         />
       </div>
       <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="source">Source</label>
-        <FormControl fullWidth>
-          <Select
-            id="source-select"
-            value={formik.values.source}
-            label="Source"
-            onChange={(event) => {
-              formik.setFieldValue('source', event.target.value)
-            }}
-            style={{ ...selectStyle }}
-          >
-            <MenuItem value="Amazon">Amazon</MenuItem>
-            <MenuItem value="Target">Target</MenuItem>
-            <MenuItem value="Walmart">Walmart</MenuItem>
-            <MenuItem value="eBay">eBay</MenuItem>
-          </Select>
-        </FormControl>
+        <label style={{ fontWeight: 'bold' }} htmlFor="itemLink">
+          Link
+        </label>
+        <input
+          type="url"
+          id="itemLink"
+          name="itemLink"
+          placeholder="Ex: www.amazon.com/item"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.itemLink}
+          style={{ ...inputStyle }}
+        />
+      </div>
+      <div style={{ marginBottom: '10px' }}>
+        <label style={{ fontWeight: 'bold' }} htmlFor="itemPrice">
+          Price
+        </label>
+        <input
+          type="number"
+          id="itemPrice"
+          name="itemPrice"
+          placeholder="Ex: $25.00"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.itemPrice}
+          style={{ ...inputStyle }}
+        />
       </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <button
+          type="button"
+          onClick={onPrevious}
+          style={{
+            width: '100px',
+            height: '50px',
+            backgroundColor: '#000000',
+            color: '#FFC700',
+            borderRadius: '30px',
+            fontWeight: 'bold',
+            marginTop: '25px',
+          }}>
+          Previous Step
+        </button>
         <button
           type="submit"
           style={{
@@ -79,14 +108,13 @@ const Step2Form: React.FC<StepProps> = ({ formik, onNext }) => {
             color: '#FFC700',
             borderRadius: '30px',
             fontWeight: 'bold',
-            marginTop: '25px'
-          }}
-        >
-          Next Step
+            marginTop: '25px',
+          }}>
+          Submit
         </button>
       </div>
     </form>
-  )
-}
+  );
+};
 
 export default Step2Form;
