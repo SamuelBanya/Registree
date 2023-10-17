@@ -143,11 +143,7 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({
               <Step1Form formik={formik} onNext={handleNextStep} />
             )}
             {currentStep === 2 && (
-              <Step2Form
-                formik={formik}
-                onNext={handleNextStep}
-                onPrevious={handlePreviousStep}
-              />
+              <Step2Form formik={formik} onPrevious={handlePreviousStep} />
             )}
           </Box>
         </Box>
