@@ -26,16 +26,10 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({
   const [currentStep, setCurrentStep] = useState(1);
 
   const handleNextStep = () => {
-    console.log('handleNextStep called');
-    console.log('currentStep: ' + JSON.stringify(currentStep));
-
     setCurrentStep(currentStep + 1);
   };
 
   const handlePreviousStep = () => {
-    console.log('handlePreviousStep called');
-    console.log('currentStep: ' + JSON.stringify(currentStep));
-
     setCurrentStep(currentStep - 1);
   };
 
@@ -44,10 +38,7 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({
       registreeName: '',
       source: '',
     },
-    onSubmit: (values) => {
-      console.log('onSubmit function called');
-      console.log('values: ', JSON.stringify(values));
-    },
+    onSubmit: (values) => {},
   });
 
   // Adding mobile specific changes for style changes based on mobile view:
