@@ -32,6 +32,18 @@ Related guides for reference:
 *** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
 ** In Progress
+*** IN-PROGRESS Model 'Registry Wizard Menu' components after related Figma
+<2023-09-25 Mon 21:44>: Related Figma:
+- https://www.figma.com/file/1Bs8zp5JTaQrc2IvCFwrpH/Registree?type=design&node-id=0-1&mode=design&t=t9rveZ9S219Q4nm2-0
+
+I am getting close so far, but I need to adjust the styling of the 'Select' component so that the label is more close to the actual design.
+
+There is weird blue styling that's present by default.
+
+Afterwards, I will have to figure out how I will handle handing state between two screens of a given 'Formik' based form.
+
+<2023-09-25 Mon 22:03>: I am still not sure how to remove the default blue outline from the 'Select' tag.
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
