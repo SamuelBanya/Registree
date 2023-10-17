@@ -21,8 +21,8 @@ const Step1Form: React.FC<StepProps> = ({ formik, onNext }) => {
     marginTop: '20px',
     textIndent: '20px',
     border: '2px solid black',
-    outline: 'none'
-  }
+    outline: 'none',
+  };
   const selectStyle = {
     width: '100%',
     borderRadius: '15px',
@@ -30,15 +30,17 @@ const Step1Form: React.FC<StepProps> = ({ formik, onNext }) => {
     marginTop: '20px',
     textIndent: '8px',
     border: '2px solid black',
-  }
+  };
 
   return (
-    <form onSubmit={formik.handleSubmit} style={{ width: '80%', margin: '0 auto' }}>
+    <form style={{ width: '80%', margin: '0 auto' }}>
       <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
         Registree Info
       </h1>
       <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="registreeName">Registree Name</label>
+        <label style={{ fontWeight: 'bold' }} htmlFor="registreeName">
+          Registree Name
+        </label>
         <input
           type="text"
           id="registreeName"
@@ -51,17 +53,18 @@ const Step1Form: React.FC<StepProps> = ({ formik, onNext }) => {
         />
       </div>
       <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="source">Source</label>
+        <label style={{ fontWeight: 'bold' }} htmlFor="source">
+          Source
+        </label>
         <FormControl fullWidth>
           <Select
             id="source-select"
             value={formik.values.source}
             label="Source"
             onChange={(event) => {
-              formik.setFieldValue('source', event.target.value)
+              formik.setFieldValue('source', event.target.value);
             }}
-            style={{ ...selectStyle }}
-          >
+            style={{ ...selectStyle }}>
             <MenuItem value="Amazon">Amazon</MenuItem>
             <MenuItem value="Target">Target</MenuItem>
             <MenuItem value="Walmart">Walmart</MenuItem>
@@ -70,9 +73,9 @@ const Step1Form: React.FC<StepProps> = ({ formik, onNext }) => {
         </FormControl>
       </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-      <button
-    type="button"
-    onClick={onNext}
+        <button
+          type="button"
+          onClick={onNext}
           style={{
             width: '100px',
             height: '50px',
@@ -80,14 +83,13 @@ const Step1Form: React.FC<StepProps> = ({ formik, onNext }) => {
             color: '#FFC700',
             borderRadius: '30px',
             fontWeight: 'bold',
-            marginTop: '25px'
-          }}
-        >
+            marginTop: '25px',
+          }}>
           Next Step
         </button>
       </div>
     </form>
-  )
-}
+  );
+};
 
 export default Step1Form;

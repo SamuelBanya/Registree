@@ -4,7 +4,15 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import React from 'react';
+import React, { useState } from 'react';
+import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
+  function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  },
+);
 
 interface StepProps {
   formik: ReturnType<typeof useFormik>;
@@ -12,8 +20,12 @@ interface StepProps {
 }
 
 const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
+  const [open, setOpen] = useState(false);
+
   const theme = useTheme();
+
   const isMobileView = theme.breakpoints.down('sm');
+
   const inputStyle = {
     width: '100%',
     borderRadius: '15px',
@@ -23,6 +35,7 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
     border: '2px solid black',
     outline: 'none',
   };
+
   const selectStyle = {
     width: '100%',
     borderRadius: '15px',
@@ -32,10 +45,39 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
     border: '2px solid black',
   };
 
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string,
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const handleCustomSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    formik.handleSubmit(e);
+
+    // Now that the form has passed validation, throw a success snackbar:
+    setOpen(true);
+  };
+
   return (
     <form
-      onSubmit={formik.handleSubmit}
+      onSubmit={handleCustomSubmit}
       style={{ width: '80%', margin: '0 auto' }}>
+      <Snackbar
+        autoHideDuration={6000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={open}
+        onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          This is a success message!
+        </Alert>
+      </Snackbar>
       <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
         Registree Info
       </h1>
