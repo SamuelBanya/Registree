@@ -2,7 +2,8 @@
 #+PRIORITIES: 1 5 3
 * Jira Tickets
 ** Todo
-*** TODO Add the 'ASP.NET' backend to the project as well
+** In Progress
+*** IN-PROGRESS Add a '.NET 7.0' backend as well as a related Postgresql database to the project
 <2023-05-19 Fri 14:01>: I plan on adding the 'ASP.NET' backend later.
 
 Related links to use for reference:
@@ -29,22 +30,7 @@ Related guides for reference:
 - https://medium.com/bb-tutorials-and-thoughts/how-to-develop-and-build-react-app-with-net-core-backend-59d4fc5e3041
 - https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio
 
-*** TODO Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
-<2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
-** In Progress
-*** IN-PROGRESS Model 'Registry Wizard Menu' components after related Figma
-<2023-09-25 Mon 21:44>: Related Figma:
-- https://www.figma.com/file/1Bs8zp5JTaQrc2IvCFwrpH/Registree?type=design&node-id=0-1&mode=design&t=t9rveZ9S219Q4nm2-0
-
-I am getting close so far, but I need to adjust the styling of the 'Select' component so that the label is more close to the actual design.
-
-There is weird blue styling that's present by default.
-
-Afterwards, I will have to figure out how I will handle handing state between two screens of a given 'Formik' based form.
-
-<2023-09-25 Mon 22:03>: I am still not sure how to remove the default blue outline from the 'Select' tag.
-
-<2023-10-17 Tue 20:41>: I had to follow this .NET based GitHub issues page to figure out how to install .NET 7.0 on Linux Mint:
+<2023-10-17 Tue 21:07>: <2023-10-17 Tue 20:41>: I had to follow this .NET based GitHub issues page to figure out how to install .NET 7.0 on Linux Mint:
 - https://github.com/dotnet/sdk/issues/27129
 
 More specifically, this comment helped:
@@ -174,7 +160,7 @@ Build succeeded.
 Unable to create an object of type 'RegistreeContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
 #+end_src
 
-At this point, I will have to figure out how to install Postgres on Linux Mint accordingly, and hook it up to the backend.
+<2023-10-17 Tue 21:10>: At this point, I will have to figure out how to install Postgres on Linux Mint accordingly, and hook it up to the backend.
 
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
@@ -892,6 +878,26 @@ Most likely, I will have to achieve this look by doing the following:
 - The lower portion should be a form, ideally a 'Formik' based form, since I've used that package through work anyway
 - The 'Next Step' button itself should just be a basic button as well from Material UI with custom styling.
 
+*** DONE Model 'Registry Wizard Menu' components after related Figma
+CLOSED: [2023-10-17 Tue 21:07]
+<2023-09-25 Mon 21:44>: Related Figma:
+- https://www.figma.com/file/1Bs8zp5JTaQrc2IvCFwrpH/Registree?type=design&node-id=0-1&mode=design&t=t9rveZ9S219Q4nm2-0
+
+I am getting close so far, but I need to adjust the styling of the 'Select' component so that the label is more close to the actual design.
+
+There is weird blue styling that's present by default.
+
+Afterwards, I will have to figure out how I will handle handing state between two screens of a given 'Formik' based form.
+
+<2023-09-25 Mon 22:03>: I am still not sure how to remove the default blue outline from the 'Select' tag.
+
+<2023-10-17 Tue 21:08>: It pretty much matches the Figma now, so we're good on this task.
+
+*** DONE Make sure that the website is mobile responsive to all devices at the very beginning to prevent layout issues later on
+CLOSED: [2023-10-17 Tue 21:08]
+<2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
+
+<2023-10-17 Tue 21:08>: This was done since this app is created with Material UI so it's mobile responsive by default.
 ** TASKS THAT ARE CANCELLED
 *** CANCELLED Match Figma template to actual React Native App for 'List' page
 <2023-06-10 Sat 10:33>: The current goal is to get the 'List' page to match my Figma template.
