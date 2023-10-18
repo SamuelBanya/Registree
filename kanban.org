@@ -44,6 +44,138 @@ Afterwards, I will have to figure out how I will handle handing state between tw
 
 <2023-09-25 Mon 22:03>: I am still not sure how to remove the default blue outline from the 'Select' tag.
 
+<2023-10-17 Tue 20:41>: I had to follow this .NET based GitHub issues page to figure out how to install .NET 7.0 on Linux Mint:
+- https://github.com/dotnet/sdk/issues/27129
+
+More specifically, this comment helped:
+- https://github.com/dotnet/sdk/issues/27129#issuecomment-1214358108
+
+This is what I did on the Linux Mint box:
+#+begin_src bash
+sudo apt remove --purge --autoremove *dotnet*
+
+#+end_src
+
+Inside '/etc/apt/preferences.d/dotnet':
+#+begin_src bash
+Package: *net
+Pin: origin packages.microsoft.com
+Pin-Priority: 1001
+#+end_src
+
+Inside '/etc/apt/preferences.d/aspnet':
+#+begin_src bash
+Package: *aspnet
+Pin: origin packages.microsoft.com
+Pin-Priority: 1001
+#+end_src
+
+I then used this command:
+#+begin_src bash
+sudo apt install dotnet-sdk-6.0
+#+end_src
+
+I then added 'dotnet' to my $PATH variable in my ~/.bashrc:
+#+begin_src bash
+# Adding 'dotnet' to path for 'devstation' machine:
+if [ "$(hostname)" = "devstation" ]; then
+    # Making sure I don't duplicate the 'dotnet' path twice:
+    if [[ ":$PATH:" != *":/usr/bin/dotnet:"* ]]; then
+        export PATH="$PATH:/usr/bin/dotnet"
+    fi
+fi
+#+end_src
+
+I then did the following steps to install and configure the .NET 7.0 based API itself:
+#+begin_src bash
+dotnet new webapi -n RegistreeApi
+cd RegistreeApi
+#+end_src
+
+Within 'Models/Registree.cs', I added the following:
+#+begin_src csharp
+using System;
+
+namespace RegistreeApi.Models
+{
+    public class Registree
+    {
+        public int Id { get; set; }
+        public string? RegistreeName { get; set; }
+        public string? RegistreeLink { get; set; }
+        public string? Vendor { get set; }
+        public bool? Share { get; set; }
+    }
+}
+#+end_src
+
+Within 'Data/RegistreeContext.cs':
+#+begin_src csharp
+using Microsoft.EntityFrameworkCore;
+
+namespace RegistreeApi.Data
+{
+    public class RegistreeContext : DbContext
+    {
+        public RegistreeContext(DbContextOptions<RegistreeContext> options) : base(options)
+        {
+        }
+
+        public DbSet<RegistreeApi.Models.Registree> Registrees { get; set; }
+    }
+}
+#+end_src
+
+Within 'appsettings.json':
+#+begin_src bash
+{
+    "ConnectionStrings": {
+        "RegistreeDbConnection": "Data Source=registree.db"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "AllowedHosts": "*"
+}
+#+end_src
+
+Within 'RegistreeAPI.csproj':
+#+begin_src csharp
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.12" />
+  </ItemGroup>
+
+</Project>
+#+end_src
+
+I then finally did this command:
+#+begin_src bash
+sam@devstation ~/hub/repos/Registree/registree/RegistreeAPI $ dotnet ef migrations add InitialCreate
+Build started...
+Build succeeded.
+Unable to create an object of type 'RegistreeContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
+#+end_src
+
+At this point, I will have to figure out how to install Postgres on Linux Mint accordingly, and hook it up to the backend.
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
