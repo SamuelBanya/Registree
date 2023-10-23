@@ -162,6 +162,37 @@ Unable to create an object of type 'RegistreeContext'. For the different pattern
 
 <2023-10-17 Tue 21:10>: At this point, I will have to figure out how to install Postgres on Linux Mint accordingly, and hook it up to the backend.
 
+<2023-10-23 Mon 18:20>: Here are the commands I used to install 'Postgres' on Linux Mint:
+#+begin_src bash
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+sudo -u postgres createuser --interactive
+sudo -u postgres createdb <database>
+
+sam@devstation ~/hub/repos/Registree/registree $ sudo -u postgres createuser --interactive
+Enter name of role to add: user
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) n
+Shall the new role be allowed to create more new roles? (y/n) n
+
+sudo systemctl restart postgresql
+
+sudo -u postgres psql
+
+sam@devstation ~/hub/repos/Registree/registree $ sudo -u postgres psql
+
+postgres=# CREATE DATABASE registree;
+CREATE DATABASE
+
+postgres=# ALTER USER "user" WITH PASSWORD '';
+ALTER ROLE
+#+end_src
+
+NOTE:
+- It's SECURE, with a regular name, just numbers
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:

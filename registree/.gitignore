@@ -28,3 +28,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# CUSTOM:
+# Adding appsettings.json to prevent SQL creds from being added to git repo:
+RegistreeAPI/appsettings.json
