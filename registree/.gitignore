@@ -31,4 +31,4 @@ yarn-error.log*
 
 # CUSTOM:
 # Adding appsettings.json to prevent SQL creds from being added to git repo:
-registree/RegistreeAPI/appsettings.json
+/RegistreeAPI/appsettings.json
