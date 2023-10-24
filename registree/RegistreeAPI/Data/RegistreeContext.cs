@@ -8,6 +8,6 @@ namespace RegistreeApi.Data
         {
         }
 
-        public DbSet<RegistreeApi.Models.Registree> Registrees { get; set; }
+        public DbSet<Registree> Registrees { get; set; }
     }
 }

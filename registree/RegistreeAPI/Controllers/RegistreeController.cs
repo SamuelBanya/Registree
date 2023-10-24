@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RegistreeAPI.Models;
+using RegistreeAPI.Data;
 
 [Route("api/[controller]")]
 [ApiController]

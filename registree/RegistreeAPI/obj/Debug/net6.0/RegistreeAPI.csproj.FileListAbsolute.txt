@@ -1,0 +1,7 @@
+/home/sam/hub/repos/Registree/registree/RegistreeAPI/obj/Debug/net6.0/RegistreeAPI.csproj.AssemblyReference.cache
+/home/sam/hub/repos/Registree/registree/RegistreeAPI/obj/Debug/net6.0/RegistreeAPI.GeneratedMSBuildEditorConfig.editorconfig
+/home/sam/hub/repos/Registree/registree/RegistreeAPI/obj/Debug/net6.0/RegistreeAPI.AssemblyInfoInputs.cache
+/home/sam/hub/repos/Registree/registree/RegistreeAPI/obj/Debug/net6.0/RegistreeAPI.AssemblyInfo.cs
+/home/sam/hub/repos/Registree/registree/RegistreeAPI/obj/Debug/net6.0/RegistreeAPI.csproj.CoreCompileInputs.cache
+/home/sam/hub/repos/Registree/registree/RegistreeAPI/obj/Debug/net6.0/RegistreeAPI.MvcApplicationPartsAssemblyInfo.cs
+/home/sam/hub/repos/Registree/registree/RegistreeAPI/obj/Debug/net6.0/RegistreeAPI.MvcApplicationPartsAssemblyInfo.cache
