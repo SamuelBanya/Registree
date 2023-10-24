@@ -188,10 +188,21 @@ CREATE DATABASE
 
 postgres=# ALTER USER "user" WITH PASSWORD '';
 ALTER ROLE
+
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.12
 #+end_src
 
 NOTE:
 - It's SECURE, with a regular name, just numbers
+
+<2023-10-23 Mon 18:52>: I then created a new 'RegistreeController' with this command:
+#+begin_src bash
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 7.0.12
+
+dotnet tool install -g dotnet-aspnet-codegenerator
+
+dotnet controller scaffold RegistreeController -m Registree -dc RegistreeContext --useAsyncActions --relativeFolderPath Controllers
+#+end_src
 
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
