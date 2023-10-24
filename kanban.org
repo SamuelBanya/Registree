@@ -133,31 +133,19 @@ Within 'RegistreeAPI.csproj':
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.0" />
   </ItemGroup>
 
 </Project>
-#+end_src
-
-I then finally did this command:
-#+begin_src bash
-sam@devstation ~/hub/repos/Registree/registree/RegistreeAPI $ dotnet ef migrations add InitialCreate
-Build started...
-Build succeeded.
-Unable to create an object of type 'RegistreeContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
 #+end_src
 
 <2023-10-17 Tue 21:10>: At this point, I will have to figure out how to install Postgres on Linux Mint accordingly, and hook it up to the backend.
@@ -195,14 +183,8 @@ dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.12
 NOTE:
 - It's SECURE, with a regular name, just numbers
 
-<2023-10-23 Mon 18:52>: I then created a new 'RegistreeController' with this command:
-#+begin_src bash
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 7.0.12
-
-dotnet tool install -g dotnet-aspnet-codegenerator
-
-dotnet controller scaffold RegistreeController -m Registree -dc RegistreeContext --useAsyncActions --relativeFolderPath Controllers
-#+end_src
+<2023-10-23 Mon 19:50>: NOTE:
+- I had to force the project to use .NET 6 because it was having issues with Swagger not supporting anything less than .NET 7 for some reason.
 
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
