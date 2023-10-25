@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using RegistreeAPI.Models;
 
-namespace RegistreeApi.Data
+namespace RegistreeAPI.Data
 {
     public class RegistreeContext : DbContext
     {

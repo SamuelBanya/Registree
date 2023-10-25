@@ -3,16 +3,19 @@ using Microsoft.EntityFrameworkCore;
 using RegistreeAPI.Models;
 using RegistreeAPI.Data;
 
-[Route("api/[controller]")]
-[ApiController]
-public class RegistreeController : ControllerBase
+namespace RegistreeAPI.Controllers
 {
-    private readonly RegistreeContext _context;
-
-    public RegistreeController(RegistreeContext context)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RegistreeController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly RegistreeContext _context;
 
-    // Implement your controller actions here
+        public RegistreeController(RegistreeContext context)
+        {
+            _context = context;
+        }
+
+        // Implement your controller actions here
+    }
 }
