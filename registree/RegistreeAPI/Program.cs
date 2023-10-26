@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using RegistreeAPI.Data;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile("appsettings.json");
 
 var connectionString = builder.Configuration.GetConnectionString("RegistreeDbConnection");
+builder.Services.AddDbContext<RegistreeContext>(options => options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 
@@ -24,5 +29,19 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+try
+{
+    var dbContext = services.GetRequiredService<RegistreeContext>();
+    dbContext.Database.Migrate();
+}
+catch (Exception ex)
+{
+    // Handle any exceptions during migration here:
+    // Place logs here as well:
+}
 
 app.Run();

@@ -186,6 +186,23 @@ NOTE:
 <2023-10-23 Mon 19:50>: NOTE:
 - I had to force the project to use .NET 6 because it was having issues with Swagger not supporting anything less than .NET 7 for some reason.
 
+<2023-10-25 Wed 18:44>: It took a while but I figured out how to fix all of the 'dotnet build' errors because I wasn't including the proper namespace naming conventions for the related files I have been using.
+
+I then ran the following commands:
+#+begin_src bash
+dotnet tool install --global dotnet-ef
+#+end_src
+
+<2023-10-25 Wed 19:13>: I then ran this command to run the related migration:
+#+begin_src bash
+sam@devstation ~/hub/repos/Registree/registree/RegistreeAPI $ dotnet ef migrations add InitialCreate
+Build started...
+Build succeeded.
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 6.0.0 initialized 'RegistreeContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.0+025fc55189ae41e3f2b98bcbe4eb44c505653700' with options: None
+Done. To undo this action, use 'ef migrations remove'
+#+end_src
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:
