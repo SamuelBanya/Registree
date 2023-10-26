@@ -3,205 +3,10 @@
 * Jira Tickets
 ** Todo
 ** In Progress
-*** IN-PROGRESS Add a '.NET 7.0' backend as well as a related Postgresql database to the project
-<2023-05-19 Fri 14:01>: I plan on adding the 'ASP.NET' backend later.
+*** IN-PROGRESS Make frontend make Axios calls to C# backend
+<2023-10-25 Wed 19:21>: I need to be able to force the frontend to make Axios based calls to the C# backend.
 
-Related links to use for reference:
-- Related API link to ASP.NET API:
-- https://dotnet.microsoft.com/en-us/apps/aspnet/apis
-- Related general ASP.NET link as well:
-- https://dotnet.microsoft.com/en-us/apps/aspnet
-
-I will have to create a related database schema for what I expect to store in the backend.
-
-From the top of my head, this is probably what I should use in terms of database entries for anyone who wants to 'login' to the app to create private lists since I want people to just use the app if they don't care about privacy, but give them the option to be a bit more secure if they want to:
-- User:
-- Email address
-- Instagram account
-- Facebook account
-- TikTok account
-
-Related YouTube videos for reference:
-- #1 - Build Quiz App in React & Asp.Net Core Web API with Latest Material UI (https://www.youtube.com/watch?v=MV1rEWlcW7U)
-- React with .NET Web API – Basic App Tutorial (https://www.youtube.com/watch?v=4RKuyp_bOhY)
-
-Related guides for reference:
-- https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?view=vs-2022
-- https://medium.com/bb-tutorials-and-thoughts/how-to-develop-and-build-react-app-with-net-core-backend-59d4fc5e3041
-- https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio
-
-<2023-10-17 Tue 21:07>: <2023-10-17 Tue 20:41>: I had to follow this .NET based GitHub issues page to figure out how to install .NET 7.0 on Linux Mint:
-- https://github.com/dotnet/sdk/issues/27129
-
-More specifically, this comment helped:
-- https://github.com/dotnet/sdk/issues/27129#issuecomment-1214358108
-
-This is what I did on the Linux Mint box:
-#+begin_src bash
-sudo apt remove --purge --autoremove *dotnet*
-
-#+end_src
-
-Inside '/etc/apt/preferences.d/dotnet':
-#+begin_src bash
-Package: *net
-Pin: origin packages.microsoft.com
-Pin-Priority: 1001
-#+end_src
-
-Inside '/etc/apt/preferences.d/aspnet':
-#+begin_src bash
-Package: *aspnet
-Pin: origin packages.microsoft.com
-Pin-Priority: 1001
-#+end_src
-
-I then used this command:
-#+begin_src bash
-sudo apt install dotnet-sdk-6.0
-#+end_src
-
-I then added 'dotnet' to my $PATH variable in my ~/.bashrc:
-#+begin_src bash
-# Adding 'dotnet' to path for 'devstation' machine:
-if [ "$(hostname)" = "devstation" ]; then
-    # Making sure I don't duplicate the 'dotnet' path twice:
-    if [[ ":$PATH:" != *":/usr/bin/dotnet:"* ]]; then
-        export PATH="$PATH:/usr/bin/dotnet"
-    fi
-fi
-#+end_src
-
-I then did the following steps to install and configure the .NET 7.0 based API itself:
-#+begin_src bash
-dotnet new webapi -n RegistreeApi
-cd RegistreeApi
-#+end_src
-
-Within 'Models/Registree.cs', I added the following:
-#+begin_src csharp
-using System;
-
-namespace RegistreeApi.Models
-{
-    public class Registree
-    {
-        public int Id { get; set; }
-        public string? RegistreeName { get; set; }
-        public string? RegistreeLink { get; set; }
-        public string? Vendor { get set; }
-        public bool? Share { get; set; }
-    }
-}
-#+end_src
-
-Within 'Data/RegistreeContext.cs':
-#+begin_src csharp
-using Microsoft.EntityFrameworkCore;
-
-namespace RegistreeApi.Data
-{
-    public class RegistreeContext : DbContext
-    {
-        public RegistreeContext(DbContextOptions<RegistreeContext> options) : base(options)
-        {
-        }
-
-        public DbSet<RegistreeApi.Models.Registree> Registrees { get; set; }
-    }
-}
-#+end_src
-
-Within 'appsettings.json':
-#+begin_src bash
-{
-    "ConnectionStrings": {
-        "RegistreeDbConnection": "Data Source=registree.db"
-    },
-    "Logging": {
-        "LogLevel": {
-            "Default": "Information",
-            "Microsoft.AspNetCore": "Warning"
-        }
-    },
-    "AllowedHosts": "*"
-}
-#+end_src
-
-Within 'RegistreeAPI.csproj':
-#+begin_src csharp
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.0" />
-  </ItemGroup>
-
-</Project>
-#+end_src
-
-<2023-10-17 Tue 21:10>: At this point, I will have to figure out how to install Postgres on Linux Mint accordingly, and hook it up to the backend.
-
-<2023-10-23 Mon 18:20>: Here are the commands I used to install 'Postgres' on Linux Mint:
-#+begin_src bash
-sudo apt update
-sudo apt install postgresql postgresql-contrib
-sudo systemctl start postgresql
-sudo systemctl enable postgresql
-sudo -u postgres createuser --interactive
-sudo -u postgres createdb <database>
-
-sam@devstation ~/hub/repos/Registree/registree $ sudo -u postgres createuser --interactive
-Enter name of role to add: user
-Shall the new role be a superuser? (y/n) n
-Shall the new role be allowed to create databases? (y/n) n
-Shall the new role be allowed to create more new roles? (y/n) n
-
-sudo systemctl restart postgresql
-
-sudo -u postgres psql
-
-sam@devstation ~/hub/repos/Registree/registree $ sudo -u postgres psql
-
-postgres=# CREATE DATABASE registree;
-CREATE DATABASE
-
-postgres=# ALTER USER "user" WITH PASSWORD '';
-ALTER ROLE
-
-dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.12
-#+end_src
-
-NOTE:
-- It's SECURE, with a regular name, just numbers
-
-<2023-10-23 Mon 19:50>: NOTE:
-- I had to force the project to use .NET 6 because it was having issues with Swagger not supporting anything less than .NET 7 for some reason.
-
-<2023-10-25 Wed 18:44>: It took a while but I figured out how to fix all of the 'dotnet build' errors because I wasn't including the proper namespace naming conventions for the related files I have been using.
-
-I then ran the following commands:
-#+begin_src bash
-dotnet tool install --global dotnet-ef
-#+end_src
-
-<2023-10-25 Wed 19:13>: I then ran this command to run the related migration:
-#+begin_src bash
-sam@devstation ~/hub/repos/Registree/registree/RegistreeAPI $ dotnet ef migrations add InitialCreate
-Build started...
-Build succeeded.
-info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
-      Entity Framework Core 6.0.0 initialized 'RegistreeContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.0+025fc55189ae41e3f2b98bcbe4eb44c505653700' with options: None
-Done. To undo this action, use 'ef migrations remove'
-#+end_src
+This will require me to utilize a new 'lib/api.js' file to handle these Axios calls in one spot in the NextJS folder structure.
 
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
@@ -939,6 +744,211 @@ CLOSED: [2023-10-17 Tue 21:08]
 <2023-05-18 Thu 16:36>: I will need to check out the React Native docs to see if this is taken care of, or if this is something I just have to implement via '@media' tags at the very beginning of the project.
 
 <2023-10-17 Tue 21:08>: This was done since this app is created with Material UI so it's mobile responsive by default.
+*** DONE Add a '.NET 7.0' backend as well as a related Postgresql database to the project
+CLOSED: [2023-10-25 Wed 19:20]
+<2023-05-19 Fri 14:01>: I plan on adding the 'ASP.NET' backend later.
+
+Related links to use for reference:
+- Related API link to ASP.NET API:
+- https://dotnet.microsoft.com/en-us/apps/aspnet/apis
+- Related general ASP.NET link as well:
+- https://dotnet.microsoft.com/en-us/apps/aspnet
+
+I will have to create a related database schema for what I expect to store in the backend.
+
+From the top of my head, this is probably what I should use in terms of database entries for anyone who wants to 'login' to the app to create private lists since I want people to just use the app if they don't care about privacy, but give them the option to be a bit more secure if they want to:
+- User:
+- Email address
+- Instagram account
+- Facebook account
+- TikTok account
+
+Related YouTube videos for reference:
+- #1 - Build Quiz App in React & Asp.Net Core Web API with Latest Material UI (https://www.youtube.com/watch?v=MV1rEWlcW7U)
+- React with .NET Web API – Basic App Tutorial (https://www.youtube.com/watch?v=4RKuyp_bOhY)
+
+Related guides for reference:
+- https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?view=vs-2022
+- https://medium.com/bb-tutorials-and-thoughts/how-to-develop-and-build-react-app-with-net-core-backend-59d4fc5e3041
+- https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio
+
+<2023-10-17 Tue 21:07>: <2023-10-17 Tue 20:41>: I had to follow this .NET based GitHub issues page to figure out how to install .NET 7.0 on Linux Mint:
+- https://github.com/dotnet/sdk/issues/27129
+
+More specifically, this comment helped:
+- https://github.com/dotnet/sdk/issues/27129#issuecomment-1214358108
+
+This is what I did on the Linux Mint box:
+#+begin_src bash
+sudo apt remove --purge --autoremove *dotnet*
+
+#+end_src
+
+Inside '/etc/apt/preferences.d/dotnet':
+#+begin_src bash
+Package: *net
+Pin: origin packages.microsoft.com
+Pin-Priority: 1001
+#+end_src
+
+Inside '/etc/apt/preferences.d/aspnet':
+#+begin_src bash
+Package: *aspnet
+Pin: origin packages.microsoft.com
+Pin-Priority: 1001
+#+end_src
+
+I then used this command:
+#+begin_src bash
+sudo apt install dotnet-sdk-6.0
+#+end_src
+
+I then added 'dotnet' to my $PATH variable in my ~/.bashrc:
+#+begin_src bash
+# Adding 'dotnet' to path for 'devstation' machine:
+if [ "$(hostname)" = "devstation" ]; then
+    # Making sure I don't duplicate the 'dotnet' path twice:
+    if [[ ":$PATH:" != *":/usr/bin/dotnet:"* ]]; then
+        export PATH="$PATH:/usr/bin/dotnet"
+    fi
+fi
+#+end_src
+
+I then did the following steps to install and configure the .NET 7.0 based API itself:
+#+begin_src bash
+dotnet new webapi -n RegistreeApi
+cd RegistreeApi
+#+end_src
+
+Within 'Models/Registree.cs', I added the following:
+#+begin_src csharp
+using System;
+
+namespace RegistreeApi.Models
+{
+    public class Registree
+    {
+        public int Id { get; set; }
+        public string? RegistreeName { get; set; }
+        public string? RegistreeLink { get; set; }
+        public string? Vendor { get set; }
+        public bool? Share { get; set; }
+    }
+}
+#+end_src
+
+Within 'Data/RegistreeContext.cs':
+#+begin_src csharp
+using Microsoft.EntityFrameworkCore;
+
+namespace RegistreeApi.Data
+{
+    public class RegistreeContext : DbContext
+    {
+        public RegistreeContext(DbContextOptions<RegistreeContext> options) : base(options)
+        {
+        }
+
+        public DbSet<RegistreeApi.Models.Registree> Registrees { get; set; }
+    }
+}
+#+end_src
+
+Within 'appsettings.json':
+#+begin_src bash
+{
+    "ConnectionStrings": {
+        "RegistreeDbConnection": "Data Source=registree.db"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "AllowedHosts": "*"
+}
+#+end_src
+
+Within 'RegistreeAPI.csproj':
+#+begin_src csharp
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>
+#+end_src
+
+<2023-10-17 Tue 21:10>: At this point, I will have to figure out how to install Postgres on Linux Mint accordingly, and hook it up to the backend.
+
+<2023-10-23 Mon 18:20>: Here are the commands I used to install 'Postgres' on Linux Mint:
+#+begin_src bash
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+sudo -u postgres createuser --interactive
+sudo -u postgres createdb <database>
+
+sam@devstation ~/hub/repos/Registree/registree $ sudo -u postgres createuser --interactive
+Enter name of role to add: user
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) n
+Shall the new role be allowed to create more new roles? (y/n) n
+
+sudo systemctl restart postgresql
+
+sudo -u postgres psql
+
+sam@devstation ~/hub/repos/Registree/registree $ sudo -u postgres psql
+
+postgres=# CREATE DATABASE registree;
+CREATE DATABASE
+
+postgres=# ALTER USER "user" WITH PASSWORD '';
+ALTER ROLE
+
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.12
+#+end_src
+
+NOTE:
+- It's SECURE, with a regular name, just numbers
+
+<2023-10-23 Mon 19:50>: NOTE:
+- I had to force the project to use .NET 6 because it was having issues with Swagger not supporting anything less than .NET 7 for some reason.
+
+<2023-10-25 Wed 18:44>: It took a while but I figured out how to fix all of the 'dotnet build' errors because I wasn't including the proper namespace naming conventions for the related files I have been using.
+
+I then ran the following commands:
+#+begin_src bash
+dotnet tool install --global dotnet-ef
+#+end_src
+
+<2023-10-25 Wed 19:13>: I then ran this command to run the related migration:
+#+begin_src bash
+sam@devstation ~/hub/repos/Registree/registree/RegistreeAPI $ dotnet ef migrations add InitialCreate
+Build started...
+Build succeeded.
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 6.0.0 initialized 'RegistreeContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.0+025fc55189ae41e3f2b98bcbe4eb44c505653700' with options: None
+Done. To undo this action, use 'ef migrations remove'
+#+end_src
+
+<2023-10-25 Wed 19:19>: Now that the C# backend has been added with a related migration, the next task should be to actually force the frontend to make Axios calls to the related C# backend, which I think should be in its own separate branch / ticket.
+
+With that in mind, this ticket is complete.
+
 ** TASKS THAT ARE CANCELLED
 *** CANCELLED Match Figma template to actual React Native App for 'List' page
 <2023-06-10 Sat 10:33>: The current goal is to get the 'List' page to match my Figma template.
