@@ -8,6 +8,12 @@
 
 This will require me to utilize a new 'lib/api.js' file to handle these Axios calls in one spot in the NextJS folder structure.
 
+<2023-11-01 Wed 21:42>: I can't figure out the following behavior:
+- I am able to fill out the form which completes itself using 'Step2Form.tsx'
+- This results in a 'Success' green snackbar being displayed, yet there is a 'Error creating registree!' error being thrown on 'RegistryWizard.tsx'.
+
+I think this has to deal with 'api.js' being involved, and that I need to provide more error handling going forward to handle success or errors being thrown.
+
 ** COMPLETED TASKS
 *** DONE Come up with app name that doesn't already exist
 <2023-05-16 Tue 11:17>: I thought of using the name 'Gifter', but it's already taken which totally sucks:

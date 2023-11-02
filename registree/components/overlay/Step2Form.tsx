@@ -21,6 +21,7 @@ interface StepProps {
 
 const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState(null);
 
   const theme = useTheme();
 
@@ -59,10 +60,15 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
   const handleCustomSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    formik.handleSubmit(e);
+    try {
+      formik.handleSubmit(e);
+      setOpen(true);
+      setError(null);
+    } catch (error) {
+      setError(error);
 
-    // Now that the form has passed validation, throw a success snackbar:
-    setOpen(true);
+      console.log('Error: ', error);
+    }
   };
 
   return (
@@ -74,9 +80,18 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={open}
         onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
-        </Alert>
+        {error ? (
+          <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+            Error occurred!
+          </Alert>
+        ) : (
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: '100%' }}>
+            This is a success message!
+          </Alert>
+        )}
       </Snackbar>
       <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
         Registree Info

@@ -7,6 +7,7 @@ import Divider from '@mui/material/Divider';
 import { useTheme } from '@mui/material/styles';
 import Step1Form from './Step1Form';
 import Step2Form from './Step2Form';
+import { createRegistree } from '../../lib/api.js';
 
 export interface RegistryDialogProps {
   open: boolean;
@@ -38,7 +39,14 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({
       registreeName: '',
       source: '',
     },
-    onSubmit: (values) => {},
+    onSubmit: async (values) => {
+      try {
+        const newRegistree = await createRegistree(values);
+        console.log('New registree: ', newRegistree);
+      } catch (error) {
+        console.log('Error creating registree!');
+      }
+    },
   });
 
   // Adding mobile specific changes for style changes based on mobile view:
