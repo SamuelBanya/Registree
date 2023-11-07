@@ -121,51 +121,6 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
       <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
         Registree Info
       </h1>
-      {/* <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="itemName">
-          Item Name
-        </label>
-        <input
-          type="text"
-          id="itemName"
-          name="itemName"
-          placeholder="Ex: Anniversary Gift"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.itemName}
-          style={{ ...inputStyle }}
-        />
-      </div>
-      <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="itemLink">
-          Link
-        </label>
-        <input
-          type="url"
-          id="itemLink"
-          name="itemLink"
-          placeholder="Ex: www.amazon.com/item"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.itemLink}
-          style={{ ...inputStyle }}
-        />
-      </div>
-      <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="itemPrice">
-          Price
-        </label>
-        <input
-          type="number"
-          id="itemPrice"
-          name="itemPrice"
-          placeholder="Ex: $25.00"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.itemPrice}
-          style={{ ...inputStyle }}
-        />
-      </div> */}
       <button
         type="button"
         onClick={handleAddItem}
@@ -195,7 +150,8 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
                 id={`itemName-${index}`}
                 name={`itemName-${index}`}
                 value={entry.itemName}
-                readOnly
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 style={{ ...inputStyle }}
               />
             </div>
@@ -210,7 +166,8 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
                 id={`itemLink-${index}`}
                 name={`itemLink-${index}`}
                 value={entry.itemLink}
-                readOnly
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 style={{ ...inputStyle }}
               />
             </div>
@@ -225,7 +182,8 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
                 id={`itemPrice-${index}`}
                 name={`itemPrice-${index}`}
                 value={entry.itemPrice}
-                readOnly
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 style={{ ...inputStyle }}
               />
             </div>
