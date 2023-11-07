@@ -21,6 +21,8 @@ interface StepProps {
 
 const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState(null);
+  const [formEntries, setFormEntries] = useState([]);
 
   const theme = useTheme();
 
@@ -59,10 +61,39 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
   const handleCustomSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    formik.handleSubmit(e);
+    try {
+      setFormEntries([...formEntries, formik.values]);
 
-    // Now that the form has passed validation, throw a success snackbar:
-    setOpen(true);
+      // Reset the form values:
+      formik.resetForm();
+
+      setOpen(true);
+      setError(null);
+    } catch (error) {
+      setError(error);
+
+      console.log('Error: ', error);
+    }
+  };
+
+  const handleAddItem = () => {
+    setFormEntries([...formEntries, formik.values]);
+
+    formik.resetForm();
+  };
+
+  const handleEditItem = (index) => {
+    const editedItem = formEntries[index];
+
+    formik.setValues(editedItem);
+  };
+
+  const handleDeleteItem = (index) => {
+    const updatedEntries = [...formEntries];
+
+    updatedEntries.splice(index, 1);
+
+    setFormEntries(updatedEntries);
   };
 
   return (
@@ -74,57 +105,116 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={open}
         onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
-        </Alert>
+        {error ? (
+          <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+            Error occurred!
+          </Alert>
+        ) : (
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: '100%' }}>
+            This is a success message!
+          </Alert>
+        )}
       </Snackbar>
       <h1 style={{ marginBottom: '20px', textAlign: 'left' }}>
         Registree Info
       </h1>
-      <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="itemName">
-          Item Name
-        </label>
-        <input
-          type="text"
-          id="itemName"
-          name="itemName"
-          placeholder="Ex: Anniversary Gift"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.itemName}
-          style={{ ...inputStyle }}
-        />
-      </div>
-      <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="itemLink">
-          Link
-        </label>
-        <input
-          type="url"
-          id="itemLink"
-          name="itemLink"
-          placeholder="Ex: www.amazon.com/item"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.itemLink}
-          style={{ ...inputStyle }}
-        />
-      </div>
-      <div style={{ marginBottom: '10px' }}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="itemPrice">
-          Price
-        </label>
-        <input
-          type="number"
-          id="itemPrice"
-          name="itemPrice"
-          placeholder="Ex: $25.00"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.itemPrice}
-          style={{ ...inputStyle }}
-        />
+      <button
+        type="button"
+        onClick={handleAddItem}
+        style={{
+          width: '100px',
+          height: '50px',
+          backgroundColor: '#FFC700',
+          color: '#000000',
+          borderRadius: '30px',
+          fontWeight: 'bold',
+          marginTop: '25px',
+        }}>
+        Add Item
+      </button>
+      <div>
+        {formEntries.map((entry, index) => (
+          <div key={index}>
+            <h2>Item {index + 1}</h2>
+            <div style={{ marginBottom: '10px' }}>
+              <label
+                style={{ fontWeight: 'bold' }}
+                htmlFor={`itemName-${index}`}>
+                Item Name
+              </label>
+              <input
+                type="text"
+                id={`itemName-${index}`}
+                name={`itemName-${index}`}
+                value={entry.itemName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                style={{ ...inputStyle }}
+              />
+            </div>
+            <div style={{ marginBottom: '10px' }}>
+              <label
+                style={{ fontWeight: 'bold' }}
+                htmlFor={`itemLink-${index}`}>
+                Link
+              </label>
+              <input
+                type="url"
+                id={`itemLink-${index}`}
+                name={`itemLink-${index}`}
+                value={entry.itemLink}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                style={{ ...inputStyle }}
+              />
+            </div>
+            <div style={{ marginBottom: '10px' }}>
+              <label
+                style={{ fontWeight: 'bold' }}
+                htmlFor={`itemPrice-${index}`}>
+                Price
+              </label>
+              <input
+                type="text"
+                id={`itemPrice-${index}`}
+                name={`itemPrice-${index}`}
+                value={entry.itemPrice}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                style={{ ...inputStyle }}
+              />
+            </div>
+            <button
+              onClick={() => handleEditItem(index)}
+              style={{
+                width: '100px',
+                height: '50px',
+                backgroundColor: '#000000',
+                color: '#FFC700',
+                borderRadius: '30px',
+                fontWeight: 'bold',
+                marginTop: '25px',
+              }}>
+              Edit
+            </button>
+            <button
+              onClick={() => handleDeleteItem(index)}
+              style={{
+                width: '100px',
+                height: '50px',
+                backgroundColor: '#000000',
+                color: '#FFC700',
+                borderRadius: '30px',
+                fontWeight: 'bold',
+                marginTop: '25px',
+              }}>
+              Delete
+            </button>
+          </div>
+        ))}
       </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button
@@ -133,8 +223,8 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
           style={{
             width: '100px',
             height: '50px',
-            backgroundColor: '#000000',
-            color: '#FFC700',
+            backgroundColor: 'red',
+            color: 'white',
             borderRadius: '30px',
             fontWeight: 'bold',
             marginTop: '25px',
@@ -146,8 +236,8 @@ const Step2Form: React.FC<StepProps> = ({ formik, onPrevious }) => {
           style={{
             width: '100px',
             height: '50px',
-            backgroundColor: '#000000',
-            color: '#FFC700',
+            backgroundColor: 'green',
+            color: 'white',
             borderRadius: '30px',
             fontWeight: 'bold',
             marginTop: '25px',

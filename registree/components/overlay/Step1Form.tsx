@@ -79,8 +79,8 @@ const Step1Form: React.FC<StepProps> = ({ formik, onNext }) => {
           style={{
             width: '100px',
             height: '50px',
-            backgroundColor: '#000000',
-            color: '#FFC700',
+            backgroundColor: 'green',
+            color: '#ffffff',
             borderRadius: '30px',
             fontWeight: 'bold',
             marginTop: '25px',
