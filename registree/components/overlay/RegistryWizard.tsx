@@ -44,7 +44,7 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({
         const newRegistree = await createRegistree(values);
         console.log('New registree: ', newRegistree);
       } catch (error) {
-        console.log('Error creating registree!');
+        console.log('Error creating registree!', error);
       }
     },
   });
@@ -94,8 +94,8 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({
             sx={{
               width: 50,
               height: 50,
-              backgroundColor: '#000000',
-              color: '#ffffff',
+              backgroundColor: currentStep === 1 ? '#000000' : '#ffffff',
+              color: currentStep === 1 ? '#ffffff' : '#000000',
               marginRight: '20px',
               fontWeight: 'bold',
             }}>
@@ -114,8 +114,8 @@ const RegistryWizard: React.FC<RegistryDialogProps> = ({
             sx={{
               width: 50,
               height: 50,
-              backgroundColor: '#ffffff',
-              color: '#000000',
+              backgroundColor: currentStep === 1 ? '#ffffff' : '#000000',
+              color: currentStep === 1 ? '#000000' : '#ffffff',
               marginLeft: '20px',
               fontWeight: 'bold',
             }}>

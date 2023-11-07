@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiBaseUrl = 'http://localhost:3000';
+const apiBaseUrl = 'http://localhost:5118';
 
 const registreeApi = `${apiBaseUrl}/api/registrees`;
 
